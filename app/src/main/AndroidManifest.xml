@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="fr.cordier.duels">
+
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.WAKE_LOCK" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+
+    <application
+        android:allowBackup="true"
+        android:icon="@mipmap/logo"
+        android:label="@string/app_name"
+        android:roundIcon="@mipmap/logo_round"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme"
+        android:usesCleartextTraffic="true">
+        <activity android:name=".UiMenu.Menu"></activity>
+        <activity android:name=".Menu.GameMode" />
+
+        <service
+            android:name=".Game.MyIntentService"
+            android:exported="false" />
+
+        <activity
+            android:name=".GameC.FinC"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".GameC.Game32C"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".GameC.Game16C"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".GameC.Game8C"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".GameC.MusicList"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".Log.RGPD"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".Menu.Settings"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".Log.Inscription"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".Menu.Share"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".User.UserScores"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".User.UserRankings"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".User.Password"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".User.Info"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".Game.Rankings"
+            android:label="@string/title_activity_rankings"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".User.FriendList"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".Menu.Profile"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".Log.Connect"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".Game.Fin"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".Game.Choice"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".Game.Game32"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".Game.Game16"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".Game.Game"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".Game.start"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".Game.GroupList"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".Menu.GenreList"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".Log.MainActivity"
+            android:label="@string/app_name"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme.NoActionBar">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
+        <meta-data
+            android:name="preloaded_fonts"
+            android:resource="@array/preloaded_fonts" />
+
+        <uses-library
+            android:name="org.apache.http.legacy"
+            android:required="false" />
+    </application>
+
+</manifest>

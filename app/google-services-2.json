@@ -1,0 +1,44 @@
+{
+  "project_info": {
+    "project_number": "480263385752",
+    "firebase_url": "https://duels-e00a5.firebaseio.com",
+    "project_id": "duels-e00a5",
+    "storage_bucket": "duels-e00a5.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:480263385752:android:77542b49d69f9e455656ed",
+        "android_client_info": {
+          "package_name": "fr.cordier.duels"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "480263385752-cli97mog07f96ssp51hjo5j1obebsidr.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "fr.cordier.duels",
+            "certificate_hash": "ae8355aa4b5b629e4fb5d4b13bcc19314f34047b"
+          }
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB0vTLhiAZaq1RKlLUtlYjA47qiDM3MLjg"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "480263385752-jdfuvd8ro24vlbu9j8b0hf05jakbbok4.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

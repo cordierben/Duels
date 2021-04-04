@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <array name="preloaded_fonts" translatable="false">
+        <item>@font/audiowide</item>
+        <item>@font/convergence</item>
+        <item>@font/delius_unicase_bold</item>
+        <item>@font/jockey_one</item>
+        <item>@font/lora</item>
+        <item>@font/marvel_bold</item>
+        <item>@font/maven_pro</item>
+        <item>@font/nobile</item>
+        <item>@font/ubuntu_light</item>
+    </array>
+</resources>

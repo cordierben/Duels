@@ -1,0 +1,1498 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:orientation="horizontal"
+    android:background="@drawable/gradient_list"
+    android:id="@+id/layoutG32C">
+
+
+    <FrameLayout
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent">
+
+        <HorizontalScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:padding="10px" >
+
+            <ScrollView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:padding="10px" >
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" >
+
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:orientation="vertical" >
+                    </LinearLayout>
+
+                    <FrameLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content">
+
+                        <com.airbnb.lottie.LottieAnimationView
+                            android:id="@+id/branche3281"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            app:lottie_rawRes="@raw/branche328downl"
+
+                            android:layout_marginTop="90dp"
+                            android:layout_marginLeft="190dp"/>
+
+                        <com.airbnb.lottie.LottieAnimationView
+                            android:id="@+id/branche3282"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            app:lottie_rawRes="@raw/branche328upl"
+
+                            android:layout_marginTop="180dp"
+                            android:layout_marginLeft="190dp"/>
+
+                        <com.airbnb.lottie.LottieAnimationView
+                            android:id="@+id/branche3283"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            app:lottie_rawRes="@raw/branche328downl"
+
+                            android:layout_marginTop="330dp"
+                            android:layout_marginLeft="190dp"/>
+
+                        <com.airbnb.lottie.LottieAnimationView
+                            android:id="@+id/branche3284"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            app:lottie_rawRes="@raw/branche328upl"
+
+                            android:layout_marginTop="420dp"
+                            android:layout_marginLeft="190dp"/>
+
+                        <com.airbnb.lottie.LottieAnimationView
+                            android:id="@+id/branche3285"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            app:lottie_rawRes="@raw/branche328downl"
+
+                            android:layout_marginTop="570dp"
+                            android:layout_marginLeft="190dp"/>
+
+                        <com.airbnb.lottie.LottieAnimationView
+                            android:id="@+id/branche3286"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            app:lottie_rawRes="@raw/branche328upl"
+
+                            android:layout_marginTop="650dp"
+                            android:layout_marginLeft="190dp"/>
+
+                        <com.airbnb.lottie.LottieAnimationView
+                            android:id="@+id/branche3287"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            app:lottie_rawRes="@raw/branche328downl"
+
+                            android:layout_marginTop="810dp"
+                            android:layout_marginLeft="190dp"/>
+
+                        <com.airbnb.lottie.LottieAnimationView
+                            android:id="@+id/branche3288"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            app:lottie_rawRes="@raw/branche328upl"
+
+                            android:layout_marginTop="890dp"
+                            android:layout_marginLeft="190dp"/>
+
+                        <com.airbnb.lottie.LottieAnimationView
+                            android:id="@+id/branche3289"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            app:lottie_rawRes="@raw/branche328downr"
+
+                            android:layout_marginTop="90dp"
+                            android:layout_marginLeft="670dp"/>
+
+                        <com.airbnb.lottie.LottieAnimationView
+                            android:id="@+id/branche32810"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            app:lottie_rawRes="@raw/branche328upr"
+
+                            android:layout_marginTop="180dp"
+                            android:layout_marginLeft="670dp"/>
+
+                        <com.airbnb.lottie.LottieAnimationView
+                            android:id="@+id/branche32811"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            app:lottie_rawRes="@raw/branche328downr"
+
+                            android:layout_marginTop="330dp"
+                            android:layout_marginLeft="670dp"/>
+
+                        <com.airbnb.lottie.LottieAnimationView
+                            android:id="@+id/branche32812"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            app:lottie_rawRes="@raw/branche328upr"
+
+                            android:layout_marginTop="420dp"
+                            android:layout_marginLeft="670dp"/>
+
+                        <com.airbnb.lottie.LottieAnimationView
+                            android:id="@+id/branche32813"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            app:lottie_rawRes="@raw/branche328downr"
+
+                            android:layout_marginTop="570dp"
+                            android:layout_marginLeft="670dp"/>
+
+                        <com.airbnb.lottie.LottieAnimationView
+                            android:id="@+id/branche32814"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            app:lottie_rawRes="@raw/branche328upr"
+
+                            android:layout_marginTop="650dp"
+                            android:layout_marginLeft="670dp"/>
+
+                        <com.airbnb.lottie.LottieAnimationView
+                            android:id="@+id/branche32815"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            app:lottie_rawRes="@raw/branche328downr"
+
+                            android:layout_marginTop="810dp"
+                            android:layout_marginLeft="670dp"/>
+
+                        <com.airbnb.lottie.LottieAnimationView
+                            android:id="@+id/branche32816"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            app:lottie_rawRes="@raw/branche328upr"
+
+                            android:layout_marginTop="890dp"
+                            android:layout_marginLeft="670dp"/>
+
+                        <com.airbnb.lottie.LottieAnimationView
+                            android:id="@+id/branche3241"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            app:lottie_rawRes="@raw/branche324downl"
+
+                            android:layout_marginTop="150dp"
+                            android:layout_marginLeft="270dp"/>
+
+                        <com.airbnb.lottie.LottieAnimationView
+                            android:id="@+id/branche3242"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            app:lottie_rawRes="@raw/branche324upl"
+
+                            android:layout_marginTop="310dp"
+                            android:layout_marginLeft="270dp"/>
+
+                        <com.airbnb.lottie.LottieAnimationView
+                            android:id="@+id/branche3243"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            app:lottie_rawRes="@raw/branche324downl"
+
+                            android:layout_marginTop="630dp"
+                            android:layout_marginLeft="270dp"/>
+
+                        <com.airbnb.lottie.LottieAnimationView
+                            android:id="@+id/branche3244"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            app:lottie_rawRes="@raw/branche324upl"
+
+                            android:layout_marginTop="790dp"
+                            android:layout_marginLeft="270dp"/>
+
+                        <com.airbnb.lottie.LottieAnimationView
+                            android:id="@+id/branche3245"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            app:lottie_rawRes="@raw/branche324downr"
+
+                            android:layout_marginTop="150dp"
+                            android:layout_marginLeft="580dp"/>
+
+                        <com.airbnb.lottie.LottieAnimationView
+                            android:id="@+id/branche3246"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            app:lottie_rawRes="@raw/branche324upr"
+
+                            android:layout_marginTop="310dp"
+                            android:layout_marginLeft="580dp"/>
+
+                        <com.airbnb.lottie.LottieAnimationView
+                            android:id="@+id/branche3247"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            app:lottie_rawRes="@raw/branche324downr"
+
+                            android:layout_marginTop="630dp"
+                            android:layout_marginLeft="580dp"/>
+
+                        <com.airbnb.lottie.LottieAnimationView
+                            android:id="@+id/branche3248"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            app:lottie_rawRes="@raw/branche324upr"
+
+                            android:layout_marginTop="790dp"
+                            android:layout_marginLeft="580dp"/>
+
+                        <com.airbnb.lottie.LottieAnimationView
+                            android:id="@+id/branche3221"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            app:lottie_rawRes="@raw/branche322downl"
+
+                            android:layout_marginTop="280dp"
+                            android:layout_marginLeft="355dp"/>
+
+                        <com.airbnb.lottie.LottieAnimationView
+                            android:id="@+id/branche3222"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            app:lottie_rawRes="@raw/branche322upl"
+
+                            android:layout_marginTop="560dp"
+                            android:layout_marginLeft="350dp"/>
+
+                        <com.airbnb.lottie.LottieAnimationView
+                            android:id="@+id/branche3223"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            app:lottie_rawRes="@raw/branche322downr"
+
+                            android:layout_marginTop="280dp"
+                            android:layout_marginLeft="490dp"/>
+
+                        <com.airbnb.lottie.LottieAnimationView
+                            android:id="@+id/branche3224"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            app:lottie_rawRes="@raw/branche322upr"
+
+                            android:layout_marginTop="560dp"
+                            android:layout_marginLeft="490dp"/>
+
+                        <com.airbnb.lottie.LottieAnimationView
+                            android:id="@+id/branche32finale"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            app:lottie_rawRes="@raw/finale8"
+
+                            android:layout_marginTop="445dp"
+                            android:layout_marginLeft="380dp"/>
+
+                        <com.airbnb.lottie.LottieAnimationView
+                            android:id="@+id/winner32"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            app:lottie_rawRes="@raw/winner"
+                            android:layout_marginTop="65dp"
+                            android:layout_marginLeft="300dp"/>
+
+                        <ImageView
+                            android:id="@+id/branche321"
+                            android:visibility="gone"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:src="@drawable/angle_32_32"
+                            android:layout_marginTop="10dp"
+                            android:scaleX="3"
+                            android:layout_marginLeft="60dp"/>
+
+                        <ImageView
+                            android:id="@+id/branche322"
+                            android:visibility="gone"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:src="@drawable/angle_32_32"
+                            android:layout_marginTop="0dp"
+                            android:scaleY="-1"
+                            android:scaleX="3"
+                            android:layout_marginLeft="60dp"/>
+
+                        <TextView
+                            android:id="@+id/m1"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text=""
+                            android:background="@drawable/custom_button"
+                            android:textColor="@android:color/white"
+                            android:ellipsize="marquee"
+                            android:padding="6dp"
+                            android:visibility="gone"
+                            android:maxWidth="90dp"
+                            android:singleLine="true"
+                            android:scrollHorizontally="true"
+                            android:drawablePadding="1dp"
+                            android:layout_marginTop="60dp"
+                            android:layout_gravity="right"
+                            android:layout_marginEnd="2550dp"/>
+
+                        <TextView
+                            android:id="@+id/m2"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text=""
+                            android:visibility="gone"
+                            android:background="@drawable/custom_button"
+                            android:textColor="@android:color/white"
+                            android:ellipsize="marquee"
+                            android:maxWidth="90dp"
+                            android:singleLine="true"
+                            android:scrollHorizontally="true"
+                            android:padding="6dp"
+                            android:layout_marginTop="115dp"
+                            android:layout_gravity="right"
+                            android:layout_marginEnd="2550dp"/>
+
+                        <ImageView
+                            android:id="@+id/branche323"
+                            android:visibility="gone"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:src="@drawable/angle_32_32"
+                            android:layout_marginTop="130dp"
+                            android:scaleX="3"
+                            android:layout_marginLeft="60dp"/>
+
+                        <ImageView
+                            android:id="@+id/branche324"
+                            android:visibility="gone"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:src="@drawable/angle_32_32"
+                            android:layout_marginTop="120dp"
+                            android:scaleY="-1"
+                            android:scaleX="3"
+                            android:layout_marginLeft="60dp"/>
+
+                        <TextView
+                            android:id="@+id/m3"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text=""
+                            android:background="@drawable/custom_button"
+                            android:textColor="@android:color/white"
+                            android:ellipsize="marquee"
+                            android:maxWidth="90dp"
+                            android:visibility="gone"
+                            android:singleLine="true"
+                            android:scrollHorizontally="true"
+                            android:padding="6dp"
+                            android:layout_marginTop="180dp"
+                            android:layout_gravity="right"
+                            android:layout_marginEnd="2550dp"/>
+
+                        <TextView
+                            android:id="@+id/m4"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text=""
+                            android:background="@drawable/custom_button"
+                            android:textColor="@android:color/white"
+                            android:padding="6dp"
+                            android:visibility="gone"
+                            android:ellipsize="marquee"
+                            android:maxWidth="90dp"
+                            android:singleLine="true"
+                            android:scrollHorizontally="true"
+                            android:layout_marginTop="235dp"
+                            android:layout_gravity="right"
+                            android:layout_marginEnd="2550dp"/>
+
+                        <ImageView
+                            android:id="@+id/branche325"
+                            android:visibility="gone"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:src="@drawable/angle_32_32"
+                            android:layout_marginTop="250dp"
+                            android:scaleX="3"
+                            android:layout_marginLeft="60dp"/>
+
+                        <ImageView
+                            android:id="@+id/branche326"
+                            android:visibility="gone"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:src="@drawable/angle_32_32"
+                            android:layout_marginTop="240dp"
+                            android:scaleY="-1"
+                            android:scaleX="3"
+                            android:layout_marginLeft="60dp"/>
+
+                        <TextView
+                            android:id="@+id/m5"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text=""
+                            android:background="@drawable/custom_button"
+                            android:textColor="@android:color/white"
+                            android:ellipsize="marquee"
+                            android:maxWidth="90dp"
+                            android:visibility="gone"
+                            android:singleLine="true"
+                            android:scrollHorizontally="true"
+                            android:padding="6dp"
+                            android:layout_marginTop="300dp"
+                            android:layout_gravity="right"
+                            android:layout_marginEnd="2550dp"/>
+
+                        <TextView
+                            android:id="@+id/m6"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text=""
+                            android:background="@drawable/custom_button"
+                            android:textColor="@android:color/white"
+                            android:ellipsize="marquee"
+                            android:visibility="gone"
+                            android:maxWidth="90dp"
+                            android:singleLine="true"
+                            android:scrollHorizontally="true"
+                            android:padding="6dp"
+                            android:layout_marginTop="355dp"
+                            android:layout_gravity="right"
+                            android:layout_marginEnd="2550dp"/>
+
+                        <ImageView
+                            android:id="@+id/branche327"
+                            android:visibility="gone"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:src="@drawable/angle_32_32"
+                            android:layout_marginTop="370dp"
+                            android:scaleX="3"
+                            android:layout_marginLeft="60dp"/>
+
+                        <ImageView
+                            android:id="@+id/branche328"
+                            android:visibility="gone"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:src="@drawable/angle_32_32"
+                            android:layout_marginTop="360dp"
+                            android:scaleY="-1"
+                            android:scaleX="3"
+                            android:layout_marginLeft="60dp"/>
+
+                        <TextView
+                            android:id="@+id/m7"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text=""
+                            android:background="@drawable/custom_button"
+                            android:textColor="@android:color/white"
+                            android:ellipsize="marquee"
+                            android:visibility="gone"
+                            android:maxWidth="90dp"
+                            android:singleLine="true"
+                            android:scrollHorizontally="true"
+                            android:padding="6dp"
+                            android:layout_marginTop="420dp"
+                            android:layout_gravity="right"
+                            android:layout_marginEnd="2550dp"/>
+
+                        <TextView
+                            android:id="@+id/m8"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text=""
+                            android:background="@drawable/custom_button"
+                            android:textColor="@android:color/white"
+                            android:ellipsize="marquee"
+                            android:maxWidth="90dp"
+                            android:visibility="gone"
+                            android:singleLine="true"
+                            android:scrollHorizontally="true"
+                            android:padding="6dp"
+                            android:layout_marginTop="475dp"
+                            android:layout_gravity="right"
+                            android:layout_marginEnd="2550dp"/>
+
+                        <ImageView
+                            android:id="@+id/branche329"
+                            android:visibility="gone"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:src="@drawable/angle_32_32"
+                            android:layout_marginTop="490dp"
+                            android:scaleX="3"
+                            android:layout_marginLeft="60dp"/>
+
+                        <ImageView
+                            android:id="@+id/branche3210"
+                            android:visibility="gone"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:src="@drawable/angle_32_32"
+                            android:layout_marginTop="480dp"
+                            android:scaleY="-1"
+                            android:scaleX="3"
+                            android:layout_marginLeft="60dp"/>
+
+                        <TextView
+                            android:id="@+id/m9"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text=""
+                            android:background="@drawable/custom_button"
+                            android:textColor="@android:color/white"
+                            android:ellipsize="marquee"
+                            android:maxWidth="90dp"
+                            android:visibility="gone"
+                            android:singleLine="true"
+                            android:scrollHorizontally="true"
+                            android:padding="6dp"
+                            android:layout_marginTop="540dp"
+                            android:layout_gravity="right"
+                            android:layout_marginEnd="2550dp"/>
+
+                        <TextView
+                            android:id="@+id/m10"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text=""
+                            android:background="@drawable/custom_button"
+                            android:textColor="@android:color/white"
+                            android:ellipsize="marquee"
+                            android:maxWidth="90dp"
+                            android:visibility="gone"
+                            android:singleLine="true"
+                            android:scrollHorizontally="true"
+                            android:padding="6dp"
+                            android:layout_marginTop="595dp"
+                            android:layout_gravity="right"
+                            android:layout_marginEnd="2550dp"/>
+
+                        <ImageView
+                            android:id="@+id/branche3211"
+                            android:visibility="gone"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:src="@drawable/angle_32_32"
+                            android:layout_marginTop="610dp"
+                            android:scaleX="3"
+                            android:layout_marginLeft="60dp"/>
+
+                        <ImageView
+                            android:id="@+id/branche3212"
+                            android:visibility="gone"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:src="@drawable/angle_32_32"
+                            android:layout_marginTop="600dp"
+                            android:scaleY="-1"
+                            android:scaleX="3"
+                            android:layout_marginLeft="60dp"/>
+
+                        <TextView
+                            android:id="@+id/m11"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text=""
+                            android:background="@drawable/custom_button"
+                            android:textColor="@android:color/white"
+                            android:ellipsize="marquee"
+                            android:maxWidth="90dp"
+                            android:visibility="gone"
+                            android:singleLine="true"
+                            android:scrollHorizontally="true"
+                            android:padding="6dp"
+                            android:layout_marginTop="660dp"
+                            android:layout_gravity="right"
+                            android:layout_marginEnd="2550dp"/>
+
+                        <TextView
+                            android:id="@+id/m12"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text=""
+                            android:background="@drawable/custom_button"
+                            android:textColor="@android:color/white"
+                            android:ellipsize="marquee"
+                            android:maxWidth="90dp"
+                            android:visibility="gone"
+                            android:singleLine="true"
+                            android:scrollHorizontally="true"
+                            android:padding="6dp"
+                            android:layout_marginTop="715dp"
+                            android:layout_gravity="right"
+                            android:layout_marginEnd="2550dp"/>
+
+                        <ImageView
+                            android:id="@+id/branche3213"
+                            android:visibility="gone"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:src="@drawable/angle_32_32"
+                            android:layout_marginTop="730dp"
+                            android:scaleX="3"
+                            android:layout_marginLeft="60dp"/>
+
+                        <ImageView
+                            android:id="@+id/branche3214"
+                            android:visibility="gone"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:src="@drawable/angle_32_32"
+                            android:layout_marginTop="720dp"
+                            android:scaleY="-1"
+                            android:scaleX="3"
+                            android:layout_marginLeft="60dp"/>
+
+                        <TextView
+                            android:id="@+id/m13"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text=""
+                            android:background="@drawable/custom_button"
+                            android:textColor="@android:color/white"
+                            android:ellipsize="marquee"
+                            android:maxWidth="90dp"
+                            android:visibility="gone"
+                            android:singleLine="true"
+                            android:scrollHorizontally="true"
+                            android:padding="6dp"
+                            android:layout_marginTop="780dp"
+                            android:layout_gravity="right"
+                            android:layout_marginEnd="2550dp"/>
+
+                        <TextView
+                            android:id="@+id/m14"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text=""
+                            android:background="@drawable/custom_button"
+                            android:textColor="@android:color/white"
+                            android:ellipsize="marquee"
+                            android:maxWidth="90dp"
+                            android:visibility="gone"
+                            android:singleLine="true"
+                            android:scrollHorizontally="true"
+                            android:padding="6dp"
+                            android:layout_marginTop="835dp"
+                            android:layout_gravity="right"
+                            android:layout_marginEnd="2550dp"/>
+
+                        <ImageView
+                            android:id="@+id/branche3215"
+                            android:visibility="gone"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:src="@drawable/angle_32_32"
+                            android:layout_marginTop="850dp"
+                            android:scaleX="3"
+                            android:layout_marginLeft="60dp"/>
+
+                        <ImageView
+                            android:id="@+id/branche3216"
+                            android:visibility="gone"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:src="@drawable/angle_32_32"
+                            android:layout_marginTop="840dp"
+                            android:scaleY="-1"
+                            android:scaleX="3"
+                            android:layout_marginLeft="60dp"/>
+
+                        <TextView
+                            android:id="@+id/m15"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text=""
+                            android:background="@drawable/custom_button"
+                            android:textColor="@android:color/white"
+                            android:ellipsize="marquee"
+                            android:maxWidth="90dp"
+                            android:visibility="gone"
+                            android:singleLine="true"
+                            android:scrollHorizontally="true"
+                            android:padding="6dp"
+                            android:layout_marginTop="900dp"
+                            android:layout_gravity="right"
+                            android:layout_marginEnd="2550dp"/>
+
+                        <TextView
+                            android:id="@+id/m16"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text=""
+                            android:background="@drawable/custom_button"
+                            android:textColor="@android:color/white"
+                            android:ellipsize="marquee"
+                            android:maxWidth="90dp"
+                            android:visibility="gone"
+                            android:singleLine="true"
+                            android:scrollHorizontally="true"
+                            android:padding="6dp"
+                            android:layout_marginTop="955dp"
+                            android:layout_gravity="right"
+                            android:layout_marginEnd="2550dp"/>
+
+                        <ImageView
+                            android:id="@+id/branche3217"
+                            android:visibility="gone"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:src="@drawable/angle_32_32"
+                            android:layout_marginTop="10dp"
+                            android:scaleX="-3"
+                            android:layout_marginLeft="650dp"/>
+
+                        <ImageView
+                            android:id="@+id/branche3218"
+                            android:visibility="gone"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:src="@drawable/angle_32_32"
+                            android:layout_marginTop="00dp"
+                            android:scaleY="-1"
+                            android:scaleX="-3"
+                            android:layout_marginLeft="650dp"/>
+
+                        <TextView
+                            android:id="@+id/m17"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text=""
+                            android:background="@drawable/custom_button"
+                            android:textColor="@android:color/white"
+                            android:ellipsize="marquee"
+                            android:padding="6dp"
+                            android:maxWidth="90dp"
+                            android:singleLine="true"
+                            android:scrollHorizontally="true"
+                            android:drawablePadding="1dp"
+                            android:layout_marginTop="60dp"
+                            android:layout_marginLeft="810dp"/>
+
+                        <TextView
+                            android:id="@+id/m18"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text=""
+                            android:background="@drawable/custom_button"
+                            android:textColor="@android:color/white"
+                            android:ellipsize="marquee"
+                            android:maxWidth="90dp"
+                            android:singleLine="true"
+                            android:scrollHorizontally="true"
+                            android:padding="6dp"
+                            android:layout_marginTop="115dp"
+                            android:layout_marginLeft="810dp"/>
+
+                        <ImageView
+                            android:id="@+id/branche3219"
+                            android:visibility="gone"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:src="@drawable/angle_32_32"
+                            android:layout_marginTop="130dp"
+                            android:scaleX="-3"
+                            android:layout_marginLeft="650dp"/>
+
+                        <ImageView
+                            android:id="@+id/branche3220"
+                            android:visibility="gone"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:src="@drawable/angle_32_32"
+                            android:layout_marginTop="120dp"
+                            android:scaleY="-1"
+                            android:scaleX="-3"
+                            android:layout_marginLeft="650dp"/>
+
+                        <TextView
+                            android:id="@+id/m19"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text=""
+                            android:background="@drawable/custom_button"
+                            android:textColor="@android:color/white"
+                            android:ellipsize="marquee"
+                            android:maxWidth="90dp"
+                            android:singleLine="true"
+                            android:scrollHorizontally="true"
+                            android:padding="6dp"
+                            android:layout_marginTop="180dp"
+                            android:layout_marginLeft="810dp"/>
+
+                        <TextView
+                            android:id="@+id/m20"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text=""
+                            android:background="@drawable/custom_button"
+                            android:textColor="@android:color/white"
+                            android:padding="6dp"
+                            android:ellipsize="marquee"
+                            android:maxWidth="90dp"
+                            android:singleLine="true"
+                            android:scrollHorizontally="true"
+                            android:layout_marginTop="235dp"
+                            android:layout_marginLeft="810dp"/>
+
+                        <ImageView
+                            android:id="@+id/branche32_21"
+                            android:visibility="gone"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:src="@drawable/angle_32_32"
+                            android:layout_marginTop="250dp"
+                            android:scaleX="-3"
+                            android:layout_marginLeft="650dp"/>
+
+                        <ImageView
+                            android:id="@+id/branche32_22"
+                            android:visibility="gone"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:src="@drawable/angle_32_32"
+                            android:layout_marginTop="240dp"
+                            android:scaleY="-1"
+                            android:scaleX="-3"
+                            android:layout_marginLeft="650dp"/>
+
+                        <TextView
+                            android:id="@+id/m21"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text=""
+                            android:background="@drawable/custom_button"
+                            android:textColor="@android:color/white"
+                            android:ellipsize="marquee"
+                            android:maxWidth="90dp"
+                            android:visibility="gone"
+                            android:singleLine="true"
+                            android:scrollHorizontally="true"
+                            android:padding="6dp"
+                            android:layout_marginTop="300dp"
+                            android:layout_marginLeft="810dp"/>
+
+                        <TextView
+                            android:id="@+id/m22"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text=""
+                            android:background="@drawable/custom_button"
+                            android:textColor="@android:color/white"
+                            android:ellipsize="marquee"
+                            android:visibility="gone"
+                            android:maxWidth="90dp"
+                            android:singleLine="true"
+                            android:scrollHorizontally="true"
+                            android:padding="6dp"
+                            android:layout_marginTop="355dp"
+                            android:layout_marginLeft="810dp"/>
+
+                        <ImageView
+                            android:id="@+id/branche32_23"
+                            android:visibility="gone"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:src="@drawable/angle_32_32"
+                            android:layout_marginTop="370dp"
+                            android:scaleX="-3"
+                            android:layout_marginLeft="650dp"/>
+
+                        <ImageView
+                            android:id="@+id/branche32_24"
+                            android:visibility="gone"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:src="@drawable/angle_32_32"
+                            android:layout_marginTop="360dp"
+                            android:scaleY="-1"
+                            android:scaleX="-3"
+                            android:layout_marginLeft="650dp"/>
+
+                        <TextView
+                            android:id="@+id/m23"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text=""
+                            android:background="@drawable/custom_button"
+                            android:textColor="@android:color/white"
+                            android:ellipsize="marquee"
+                            android:visibility="gone"
+                            android:maxWidth="90dp"
+                            android:singleLine="true"
+                            android:scrollHorizontally="true"
+                            android:padding="6dp"
+                            android:layout_marginTop="420dp"
+                            android:layout_marginLeft="810dp"/>
+
+                        <TextView
+                            android:id="@+id/m24"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text=""
+                            android:background="@drawable/custom_button"
+                            android:textColor="@android:color/white"
+                            android:ellipsize="marquee"
+                            android:maxWidth="90dp"
+                            android:visibility="gone"
+                            android:singleLine="true"
+                            android:scrollHorizontally="true"
+                            android:padding="6dp"
+                            android:layout_marginTop="475dp"
+                            android:layout_marginLeft="810dp"/>
+
+                        <ImageView
+                            android:id="@+id/branche32_25"
+                            android:visibility="gone"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:src="@drawable/angle_32_32"
+                            android:layout_marginTop="490dp"
+                            android:scaleX="-3"
+                            android:layout_marginLeft="650dp"/>
+
+                        <ImageView
+                            android:id="@+id/branche32_26"
+                            android:visibility="gone"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:src="@drawable/angle_32_32"
+                            android:layout_marginTop="480dp"
+                            android:scaleY="-1"
+                            android:scaleX="-3"
+                            android:layout_marginLeft="650dp"/>
+
+                        <TextView
+                            android:id="@+id/m25"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text=""
+                            android:background="@drawable/custom_button"
+                            android:textColor="@android:color/white"
+                            android:ellipsize="marquee"
+                            android:maxWidth="90dp"
+                            android:visibility="gone"
+                            android:singleLine="true"
+                            android:scrollHorizontally="true"
+                            android:padding="6dp"
+                            android:layout_marginTop="540dp"
+                            android:layout_marginLeft="810dp"/>
+
+                        <TextView
+                            android:id="@+id/m26"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text=""
+                            android:background="@drawable/custom_button"
+                            android:textColor="@android:color/white"
+                            android:ellipsize="marquee"
+                            android:maxWidth="90dp"
+                            android:visibility="gone"
+                            android:singleLine="true"
+                            android:scrollHorizontally="true"
+                            android:padding="6dp"
+                            android:layout_marginTop="595dp"
+                            android:layout_marginLeft="810dp"/>
+
+                        <ImageView
+                            android:id="@+id/branche32_27"
+                            android:visibility="gone"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:src="@drawable/angle_32_32"
+                            android:layout_marginTop="610dp"
+                            android:scaleX="-3"
+                            android:layout_marginLeft="650dp"/>
+
+                        <ImageView
+                            android:id="@+id/branche32_28"
+                            android:visibility="gone"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:src="@drawable/angle_32_32"
+                            android:layout_marginTop="600dp"
+                            android:scaleY="-1"
+                            android:scaleX="-3"
+                            android:layout_marginLeft="650dp"/>
+
+                        <TextView
+                            android:id="@+id/m27"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text=""
+                            android:background="@drawable/custom_button"
+                            android:textColor="@android:color/white"
+                            android:ellipsize="marquee"
+                            android:maxWidth="90dp"
+                            android:visibility="gone"
+                            android:singleLine="true"
+                            android:scrollHorizontally="true"
+                            android:padding="6dp"
+                            android:layout_marginTop="660dp"
+                            android:layout_marginLeft="810dp"/>
+
+                        <TextView
+                            android:id="@+id/m28"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text=""
+                            android:background="@drawable/custom_button"
+                            android:textColor="@android:color/white"
+                            android:ellipsize="marquee"
+                            android:maxWidth="90dp"
+                            android:visibility="gone"
+                            android:singleLine="true"
+                            android:scrollHorizontally="true"
+                            android:padding="6dp"
+                            android:layout_marginTop="715dp"
+                            android:layout_marginLeft="810dp"/>
+
+                        <ImageView
+                            android:id="@+id/branche32_29"
+                            android:visibility="gone"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:src="@drawable/angle_32_32"
+                            android:layout_marginTop="730dp"
+                            android:scaleX="-3"
+                            android:layout_marginLeft="650dp"/>
+
+                        <ImageView
+                            android:id="@+id/branche32_30"
+                            android:visibility="gone"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:src="@drawable/angle_32_32"
+                            android:layout_marginTop="720dp"
+                            android:scaleY="-1"
+                            android:scaleX="-3"
+                            android:layout_marginLeft="650dp"/>
+
+                        <TextView
+                            android:id="@+id/m29"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text=""
+                            android:background="@drawable/custom_button"
+                            android:textColor="@android:color/white"
+                            android:ellipsize="marquee"
+                            android:maxWidth="90dp"
+                            android:visibility="gone"
+                            android:singleLine="true"
+                            android:scrollHorizontally="true"
+                            android:padding="6dp"
+                            android:layout_marginTop="780dp"
+                            android:layout_marginLeft="810dp"/>
+
+                        <TextView
+                            android:id="@+id/m30"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text=""
+                            android:background="@drawable/custom_button"
+                            android:textColor="@android:color/white"
+                            android:ellipsize="marquee"
+                            android:maxWidth="90dp"
+                            android:visibility="gone"
+                            android:singleLine="true"
+                            android:scrollHorizontally="true"
+                            android:padding="6dp"
+                            android:layout_marginTop="835dp"
+                            android:layout_marginLeft="810dp"/>
+
+                        <ImageView
+                            android:id="@+id/branche32_31"
+                            android:visibility="gone"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:src="@drawable/angle_32_32"
+                            android:layout_marginTop="850dp"
+                            android:scaleX="-3"
+                            android:layout_marginLeft="650dp"/>
+
+                        <ImageView
+                            android:id="@+id/branche32_32"
+                            android:visibility="gone"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:src="@drawable/angle_32_32"
+                            android:layout_marginTop="830dp"
+                            android:scaleY="-1"
+                            android:scaleX="-3"
+                            android:layout_marginLeft="650dp"/>
+
+                        <TextView
+                            android:id="@+id/m31"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text=""
+                            android:background="@drawable/custom_button"
+                            android:textColor="@android:color/white"
+                            android:ellipsize="marquee"
+                            android:maxWidth="90dp"
+                            android:visibility="gone"
+                            android:singleLine="true"
+                            android:scrollHorizontally="true"
+                            android:padding="6dp"
+                            android:layout_marginTop="900dp"
+                            android:layout_marginLeft="810dp"/>
+
+                        <TextView
+                            android:id="@+id/m32"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text=""
+                            android:background="@drawable/custom_button"
+                            android:textColor="@android:color/white"
+                            android:ellipsize="marquee"
+                            android:maxWidth="90dp"
+                            android:visibility="gone"
+                            android:singleLine="true"
+                            android:scrollHorizontally="true"
+                            android:padding="6dp"
+                            android:layout_marginTop="955dp"
+                            android:layout_marginLeft="810dp"/>
+
+                    </FrameLayout>
+
+                </LinearLayout>
+
+            </ScrollView>
+
+        </HorizontalScrollView>
+
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+            <Button
+                android:id="@+id/match"
+                android:layout_width="100dp"
+                android:layout_height="50dp"
+                android:visibility="gone"
+                android:layout_alignParentRight="true"
+                android:layout_alignParentBottom="true"
+                android:text="Next Match!"
+                android:textColor="@android:color/white"
+                android:background="@drawable/round_corner"
+                />
+
+        </RelativeLayout>
+
+        <com.airbnb.lottie.LottieAnimationView
+            android:id="@+id/musicLoading"
+            android:layout_width="200dp"
+            android:layout_height="200dp"
+            android:layout_gravity="center"
+            app:lottie_loop="true"
+            app:lottie_speed="0.2"
+            app:lottie_autoPlay="true"
+            app:lottie_rawRes="@raw/musicloading"/>
+
+    </FrameLayout>
+
+</LinearLayout>
+
+    <!--
+                            <com.airbnb.lottie.LottieAnimationView
+                                android:id="@+id/branche32161"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                app:lottie_rawRes="@raw/branche3216downl"
+
+                                android:layout_marginTop="60dp"
+                                android:layout_marginLeft="120dp"/>
+
+                            <com.airbnb.lottie.LottieAnimationView
+                                android:id="@+id/branche32162"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                app:lottie_rawRes="@raw/branche3216upl"
+
+                                android:layout_marginTop="110dp"
+                                android:layout_marginLeft="120dp"/>
+
+                            <com.airbnb.lottie.LottieAnimationView
+                                android:id="@+id/branche32163"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                app:lottie_rawRes="@raw/branche3216downl"
+
+                                android:layout_marginTop="180dp"
+                                android:layout_marginLeft="120dp"/>
+
+                            <com.airbnb.lottie.LottieAnimationView
+                                android:id="@+id/branche32164"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                app:lottie_rawRes="@raw/branche3216upl"
+
+                                android:layout_marginTop="230dp"
+                                android:layout_marginLeft="120dp"/>
+
+                            <com.airbnb.lottie.LottieAnimationView
+                                android:id="@+id/branche32165"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                app:lottie_rawRes="@raw/branche3216downl"
+
+                                android:layout_marginTop="300dp"
+                                android:layout_marginLeft="120dp"/>
+
+                            <com.airbnb.lottie.LottieAnimationView
+                                android:id="@+id/branche32166"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                app:lottie_rawRes="@raw/branche3216upl"
+
+                                android:layout_marginTop="350dp"
+                                android:layout_marginLeft="120dp"/>
+
+                            <com.airbnb.lottie.LottieAnimationView
+                                android:id="@+id/branche32167"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                app:lottie_rawRes="@raw/branche3216downl"
+
+                                android:layout_marginTop="420dp"
+                                android:layout_marginLeft="120dp"/>
+
+                            <com.airbnb.lottie.LottieAnimationView
+                                android:id="@+id/branche32168"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                app:lottie_rawRes="@raw/branche3216upl"
+
+                                android:layout_marginTop="470dp"
+                                android:layout_marginLeft="120dp"/>
+
+                            <com.airbnb.lottie.LottieAnimationView
+                                android:id="@+id/branche32169"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                app:lottie_rawRes="@raw/branche3216downl"
+
+                                android:layout_marginTop="540dp"
+                                android:layout_marginLeft="120dp"/>
+
+                            <com.airbnb.lottie.LottieAnimationView
+                                android:id="@+id/branche321610"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                app:lottie_rawRes="@raw/branche3216upl"
+
+                                android:layout_marginTop="590dp"
+                                android:layout_marginLeft="120dp"/>
+
+                            <com.airbnb.lottie.LottieAnimationView
+                                android:id="@+id/branche321611"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                app:lottie_rawRes="@raw/branche3216downl"
+
+                                android:layout_marginTop="660dp"
+                                android:layout_marginLeft="120dp"/>
+
+                            <com.airbnb.lottie.LottieAnimationView
+                                android:id="@+id/branche321612"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                app:lottie_rawRes="@raw/branche3216upl"
+
+                                android:layout_marginTop="710dp"
+                                android:layout_marginLeft="120dp"/>
+
+                            <com.airbnb.lottie.LottieAnimationView
+                                android:id="@+id/branche321613"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                app:lottie_rawRes="@raw/branche3216downl"
+
+                                android:layout_marginTop="780dp"
+                                android:layout_marginLeft="120dp"/>
+
+                            <com.airbnb.lottie.LottieAnimationView
+                                android:id="@+id/branche321614"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                app:lottie_rawRes="@raw/branche3216upl"
+
+                                android:layout_marginTop="830dp"
+                                android:layout_marginLeft="120dp"/>
+
+                            <com.airbnb.lottie.LottieAnimationView
+                                android:id="@+id/branche321615"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                app:lottie_rawRes="@raw/branche3216downl"
+
+                                android:layout_marginTop="900dp"
+                                android:layout_marginLeft="120dp"/>
+
+                            <com.airbnb.lottie.LottieAnimationView
+                                android:id="@+id/branche321616"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                app:lottie_rawRes="@raw/branche3216upl"
+
+                                android:layout_marginTop="950dp"
+                                android:layout_marginLeft="120dp"/>
+
+                            <com.airbnb.lottie.LottieAnimationView
+                                android:id="@+id/branche321617"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                app:lottie_rawRes="@raw/branche3216downr"
+
+                                android:layout_marginTop="60dp"
+                                android:layout_marginLeft="750dp"/>
+
+                            <com.airbnb.lottie.LottieAnimationView
+                                android:id="@+id/branche321618"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                app:lottie_rawRes="@raw/branche3216upr"
+
+                                android:layout_marginTop="110dp"
+                                android:layout_marginLeft="750dp"/>
+
+                            <com.airbnb.lottie.LottieAnimationView
+                                android:id="@+id/branche321619"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                app:lottie_rawRes="@raw/branche3216downr"
+
+                                android:layout_marginTop="180dp"
+                                android:layout_marginLeft="750dp"/>
+
+                            <com.airbnb.lottie.LottieAnimationView
+                                android:id="@+id/branche321620"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                app:lottie_rawRes="@raw/branche3216upr"
+
+                                android:layout_marginTop="230dp"
+                                android:layout_marginLeft="750dp"/>
+
+                            <com.airbnb.lottie.LottieAnimationView
+                                android:id="@+id/branche321621"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                app:lottie_rawRes="@raw/branche3216downr"
+
+                                android:layout_marginTop="300dp"
+                                android:layout_marginLeft="750dp"/>
+
+                            <com.airbnb.lottie.LottieAnimationView
+                                android:id="@+id/branche321622"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                app:lottie_rawRes="@raw/branche3216upr"
+
+                                android:layout_marginTop="350dp"
+                                android:layout_marginLeft="750dp"/>
+
+                            <com.airbnb.lottie.LottieAnimationView
+                                android:id="@+id/branche321623"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                app:lottie_rawRes="@raw/branche3216downr"
+
+                                android:layout_marginTop="420dp"
+                                android:layout_marginLeft="750dp"/>
+
+                            <com.airbnb.lottie.LottieAnimationView
+                                android:id="@+id/branche321624"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                app:lottie_rawRes="@raw/branche3216upr"
+
+                                android:layout_marginTop="470dp"
+                                android:layout_marginLeft="750dp"/>
+
+                            <com.airbnb.lottie.LottieAnimationView
+                                android:id="@+id/branche321625"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                app:lottie_rawRes="@raw/branche3216downr"
+
+                                android:layout_marginTop="540dp"
+                                android:layout_marginLeft="750dp"/>
+
+                            <com.airbnb.lottie.LottieAnimationView
+                                android:id="@+id/branche321626"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                app:lottie_rawRes="@raw/branche3216upr"
+
+                                android:layout_marginTop="590dp"
+                                android:layout_marginLeft="750dp"/>
+
+                            <com.airbnb.lottie.LottieAnimationView
+                                android:id="@+id/branche321627"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                app:lottie_rawRes="@raw/branche3216downr"
+
+                                android:layout_marginTop="660dp"
+                                android:layout_marginLeft="750dp"/>
+
+                            <com.airbnb.lottie.LottieAnimationView
+                                android:id="@+id/branche321628"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                app:lottie_rawRes="@raw/branche3216upr"
+
+                                android:layout_marginTop="710dp"
+                                android:layout_marginLeft="750dp"/>
+
+                            <com.airbnb.lottie.LottieAnimationView
+                                android:id="@+id/branche321629"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                app:lottie_rawRes="@raw/branche3216downr"
+
+                                android:layout_marginTop="780dp"
+                                android:layout_marginLeft="750dp"/>
+
+                            <com.airbnb.lottie.LottieAnimationView
+                                android:id="@+id/branche321630"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                app:lottie_rawRes="@raw/branche3216upr"
+
+                                android:layout_marginTop="830dp"
+                                android:layout_marginLeft="750dp"/>
+
+                            <com.airbnb.lottie.LottieAnimationView
+                                android:id="@+id/branche321631"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                app:lottie_rawRes="@raw/branche3216downr"
+
+                                android:layout_marginTop="900dp"
+                                android:layout_marginLeft="750dp"/>
+
+                            <com.airbnb.lottie.LottieAnimationView
+                                android:id="@+id/branche321632"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                app:lottie_rawRes="@raw/branche3216upr"
+
+                                android:layout_marginTop="950dp"
+                                android:layout_marginLeft="750dp"/>
+    -->

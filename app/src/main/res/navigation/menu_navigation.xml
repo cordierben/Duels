@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/mobile_navigation"
+    app:startDestination="@+id/navigation_menu">
+
+    <fragment
+        android:id="@+id/navigation_menu"
+        android:name="fr.cordier.duels.UiMenu.dashboard.MenuFragment"
+        android:label="Menu"
+        tools:layout="@layout/fragment_menu" />
+
+    <fragment
+        android:id="@+id/navigation_profile"
+        android:name="fr.cordier.duels.UiMenu.home.ProfileFragment"
+        android:label="Profile"
+        tools:layout="@layout/fragment_profile" />
+
+    <fragment
+        android:id="@+id/navigation_friends"
+        android:name="fr.cordier.duels.UiMenu.notifications.FriendsFragment"
+        android:label="Friends"
+        tools:layout="@layout/fragment_friends" />
+
+    <fragment
+        android:id="@+id/navigation_share"
+        android:name="fr.cordier.duels.UiMenu.share.ShareFragment"
+        android:label="Share"
+        tools:layout="@layout/fragment_share" />
+
+</navigation>

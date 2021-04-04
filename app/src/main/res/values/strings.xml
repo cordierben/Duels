@@ -1,0 +1,23 @@
+<resources>
+    <string name="app_name">Duels</string>
+    <string name="action_settings">Settings</string>
+    <string name="title_activity_rankings">Rankings</string>
+    <string name="title_home">Personal</string>
+    <string name="title_dashboard">Friends</string>
+    <string name="title_notifications">Global</string>
+    <string name="clientId">480263385752-jdfuvd8ro24vlbu9j8b0hf05jakbbok4.apps.googleusercontent.com</string>
+    <string name="facebook_app_id">729948844269138</string>
+    <string name="fb_login_protocol_scheme">fb729948844269138</string>
+    <string name="conditions">Vos données sont collectées afin de créer et gérer votre compte. Vous disposez d’un droit d’accès,
+        rectification, suppression de vos données et ne seront pas utilisées pour des fins marketing. Pour en savoir plus sur le traitement de vos données
+        personnelles, vous pouvez consulter notre politique de protection des données personnelles dans l\'onglet en haut à droite de votre écran.</string>
+    <string name="rgpd">La Politique de Protection des Données est destinée à vous informer de la politique menée par Duels en matière de protection des données à caractère personnel et des droits relatifs à la protection des données à caractère personnel dont vous disposez.
+​En utilisant notre Application, vous déclarez accepter les termes de la présente Politique de Protection des Données. Si vous êtes en désaccord avec l\’un de ses termes, vous êtes libres de ne plus utiliser nos Services.
+« Application » : désigne le(s) services de communication au public en ligne, édité(s) par Duels, accessible(s) par un Utilisateur via l’interface préalablement téléchargée sur le Play Store® d’Android. L\’(es) Application(s) permet(tent) d’accéder au(x) Service(s).
+    Nous collectons votre nom,prénom, email, age, pays et mot de passe à des fins non lucratives, pour créer et gérer votre compte, ou à des fins d\'analyse interne de données.
+        Votre mot de passe est crypté et vous uniquement y avait accès et êtes en mesure de le modifier. Nous ne sommes pas responsables de la collecte de données réalisée par Google via le Google Sign-In.
+    Si un des termes précédent venait à changer, nous vous en informons. Si vous êtes en désaccord avec un des termes précédent, ou souhaitez souligner une erreur,
+        vous pouvez nous contacter à DuelsContact@gmail.com. Vos données sont conservées sur Google Firebase, jusqu\'à la suppression du compte.
+        Si des pub venait à apparaître sur Duels, celle-ci ne serait pas ciblé et n\'utiliserait à aucun mmoment vos données personnelles.</string>
+
+</resources>
