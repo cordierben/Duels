@@ -59,10 +59,6 @@ public class Choice extends AppCompatActivity {
 
         //Animated background
         ConstraintLayout constraintlayout=findViewById(R.id.layoutC);
-        AnimationDrawable animation= (AnimationDrawable) constraintlayout.getBackground();
-        animation.setEnterFadeDuration(2000);
-        animation.setExitFadeDuration(4000);
-        animation.start();
 
         //Lecteur Deezer
         mdeezerConnect = new DeezerConnect(this,"423942");

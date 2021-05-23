@@ -4,12 +4,21 @@ import android.graphics.BitmapShader;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
+import android.graphics.RectF;
 import android.graphics.Shader;
 
 import com.squareup.picasso.Transformation;
 
-public class CircleTransform implements Transformation {
+import android.graphics.Bitmap;
+import android.graphics.BitmapShader;
+import android.graphics.Canvas;
+import android.graphics.Paint;
+import android.graphics.RectF;
 
+import com.squareup.picasso.Transformation;
+
+
+public class RoundedTransform implements Transformation {
     @Override
     public Bitmap transform(Bitmap source) {
         int size = Math.min(source.getWidth(), source.getHeight());
@@ -26,29 +35,18 @@ public class CircleTransform implements Transformation {
 
         Canvas canvas = new Canvas(bitmap);
         Paint paint = new Paint();
-        BitmapShader shader = new BitmapShader(squaredBitmap,
-                Shader.TileMode.CLAMP, Shader.TileMode.CLAMP);
+        BitmapShader shader = new BitmapShader(squaredBitmap, BitmapShader.TileMode.CLAMP, BitmapShader.TileMode.CLAMP);
         paint.setShader(shader);
         paint.setAntiAlias(true);
 
-        float r = size / 2f;
-        canvas.drawCircle(r, r, r, paint);
-
-        Paint paint1 = new Paint();
-        paint1.setColor(Color.WHITE);
-        paint1.setStyle(Paint.Style.STROKE);
-        paint1.setAntiAlias(true);
-        paint1.setStrokeWidth(10);
-        canvas.drawCircle(r, r, r, paint1);
-
-
+        float r = size / 8f;
+        canvas.drawRoundRect(new RectF(0, 0, source.getWidth(), source.getHeight()), r, r, paint);
         squaredBitmap.recycle();
         return bitmap;
     }
 
     @Override
     public String key() {
-        return "circle";
+        return "rounded_corners";
     }
 }
-

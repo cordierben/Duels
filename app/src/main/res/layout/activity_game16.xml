@@ -36,6 +36,19 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content">
 
+                        <TextView
+                            android:id="@+id/gameTitle"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textSize="150dp"
+                            android:alpha="0.2"
+                            android:visibility="gone"
+                            android:layout_marginLeft="200dp"
+                            android:layout_marginTop="250dp"
+                            android:textColor="@android:color/darker_gray"
+                            android:rotation="45"
+                            android:fontFamily="@font/royalacid"
+                            android:text="Duels"/>
 
                         <com.airbnb.lottie.LottieAnimationView
                             android:id="@+id/branche1681"
@@ -427,7 +440,7 @@
                             android:singleLine="true"
                             android:scrollHorizontally="true"
                             android:layout_marginTop="56dp"
-                            android:layout_marginLeft="800dp"/>
+                            android:layout_marginLeft="710dp"/>
 
                         <TextView
                             android:id="@+id/m10"
@@ -442,7 +455,7 @@
                             android:singleLine="true"
                             android:scrollHorizontally="true"
                             android:layout_marginTop="156dp"
-                            android:layout_marginLeft="800dp"/>
+                            android:layout_marginLeft="710dp"/>
 
                         <TextView
                             android:id="@+id/m11"
@@ -457,7 +470,7 @@
                             android:singleLine="true"
                             android:scrollHorizontally="true"
                             android:layout_marginTop="206dp"
-                            android:layout_marginLeft="800dp"/>
+                            android:layout_marginLeft="710dp"/>
 
                         <TextView
                             android:id="@+id/m12"
@@ -472,7 +485,7 @@
                             android:singleLine="true"
                             android:scrollHorizontally="true"
                             android:layout_marginTop="306dp"
-                            android:layout_marginLeft="800dp"/>
+                            android:layout_marginLeft="710dp"/>
 
                         <TextView
                             android:id="@+id/m13"
@@ -487,7 +500,7 @@
                             android:singleLine="true"
                             android:scrollHorizontally="true"
                             android:layout_marginTop="356dp"
-                            android:layout_marginLeft="800dp"/>
+                            android:layout_marginLeft="710dp"/>
 
                         <TextView
                             android:id="@+id/m14"
@@ -502,7 +515,7 @@
                             android:singleLine="true"
                             android:scrollHorizontally="true"
                             android:layout_marginTop="456dp"
-                            android:layout_marginLeft="800dp"/>
+                            android:layout_marginLeft="710dp"/>
 
                         <TextView
                             android:id="@+id/m15"
@@ -517,7 +530,7 @@
                             android:singleLine="true"
                             android:scrollHorizontally="true"
                             android:layout_marginTop="506dp"
-                            android:layout_marginLeft="800dp"/>
+                            android:layout_marginLeft="710dp"/>
 
                         <TextView
                             android:id="@+id/m16"
@@ -532,7 +545,7 @@
                             android:singleLine="true"
                             android:scrollHorizontally="true"
                             android:layout_marginTop="606dp"
-                            android:layout_marginLeft="800dp"/>
+                            android:layout_marginLeft="710dp"/>
 
 
                     </FrameLayout>

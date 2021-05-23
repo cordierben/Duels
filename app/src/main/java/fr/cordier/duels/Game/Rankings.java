@@ -1,5 +1,6 @@
 package fr.cordier.duels.Game;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.AnimationDrawable;
@@ -11,19 +12,10 @@ import android.view.WindowManager;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-import android.widget.Toast;
 
-import com.deezer.sdk.model.Artist;
-import com.deezer.sdk.model.Permissions;
-import com.deezer.sdk.network.connect.DeezerConnect;
-import com.deezer.sdk.network.request.DeezerRequest;
-import com.deezer.sdk.network.request.DeezerRequestFactory;
-import com.deezer.sdk.network.request.event.JsonRequestListener;
-import com.deezer.sdk.network.request.event.RequestListener;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
-import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.Query;
@@ -37,8 +29,6 @@ import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 import androidx.navigation.ui.AppBarConfiguration;
 import androidx.navigation.ui.NavigationUI;
-
-import org.json.JSONArray;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -62,10 +52,6 @@ public class Rankings extends AppCompatActivity {
 
         //Animated background
         ConstraintLayout constraintlayout=findViewById(R.id.container);
-        AnimationDrawable animation= (AnimationDrawable) constraintlayout.getBackground();
-        animation.setEnterFadeDuration(2000);
-        animation.setExitFadeDuration(4000);
-        animation.start();
 
         //Récupération data
         Intent intent=getIntent();
@@ -153,7 +139,7 @@ public class Rankings extends AppCompatActivity {
                                     for(int i=values.size()-1;i>=0;i=i-1){
                                         Log.i("*****",values.get(i).getTitle());
                                         int pos=values.size()-i;
-                                        if(values.get(i).getTitle().equals("")==false&&values.get(i).equals(null)==false) {
+                                        if(!values.get(i).getTitle().equals("") &&!values.get(i).equals(null)) {
                                             CreateRanking(pos,GlobalLayout,values.get(i));
                                         }
                                     }
@@ -200,7 +186,7 @@ public class Rankings extends AppCompatActivity {
                                     List<Song> values=tri(song);
                                     for(int i=values.size()-1;i>=0;i=i-1){
                                         int pos=values.size()-i;
-                                        if(values.get(i).getTitle().equals("")==false&&values.get(i).equals(null)==false) {
+                                        if(!values.get(i).getTitle().equals("") &&values.get(i).equals(null)==false) {
                                             CreateRanking(pos,GlobalLayout,values.get(i));
                                         }
                                     }
@@ -332,15 +318,13 @@ public class Rankings extends AppCompatActivity {
             song.set(index,song.get(i));
             song.set(i,min);
         }
-        for(int i=0;i<song.size();i=i+1){
-            Song track=song.get(i);
-            top.add(track);
-        }
+        top.addAll(song);
         return top;
 
     }
 
-    protected void CreateRanking(int pos, LinearLayout GlobalLayout,Song tracks){
+    @SuppressLint("SetTextI18n")
+    protected void CreateRanking(int pos, LinearLayout GlobalLayout, Song tracks){
         if(pos==0){
             TextView txt=new TextView(getApplicationContext());
             txt.setText("This country does not have a ranking for"+name);

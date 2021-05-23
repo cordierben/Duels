@@ -1,11 +1,9 @@
 package fr.cordier.duels.Game;
 
 import androidx.annotation.NonNull;
-import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.Activity;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.drawable.AnimationDrawable;
 import android.os.Bundle;
@@ -15,12 +13,14 @@ import android.view.WindowManager;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.airbnb.lottie.LottieAnimationView;
 import com.deezer.sdk.model.Album;
+import com.deezer.sdk.model.Artist;
 import com.deezer.sdk.model.Permissions;
 import com.deezer.sdk.model.Track;
 import com.deezer.sdk.network.connect.DeezerConnect;
@@ -36,19 +36,18 @@ import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QuerySnapshot;
-import com.google.protobuf.StringValue;
+import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Objects;
 import java.util.Random;
-import java.util.concurrent.ExecutionException;
 
+import fr.cordier.duels.Class.CircleTransform;
 import fr.cordier.duels.Class.Song;
-import fr.cordier.duels.Menu.GenreList;
-import fr.cordier.duels.Menu.Settings;
 import fr.cordier.duels.R;
 
 public class Game extends AppCompatActivity {
@@ -63,8 +62,6 @@ public class Game extends AppCompatActivity {
     DeezerConnect deezerConnect;
     String mode;
     String Email;
-    String interruptedExcpetion="InterruptedException: ";
-    String executionException="ExecutionException: ";
     List<Song> songList=new ArrayList<>(8);
     List<Song> perdantList=new ArrayList<>(8);
     List<Song> songListR=new ArrayList<>();
@@ -97,9 +94,30 @@ public class Game extends AppCompatActivity {
         for(int i=0;i<8;i=i+1) songList.add(new Song("","","",0));
 
         deezerConnect = new DeezerConnect(applicationID);
-        String[] permissions = new String[] {Permissions.BASIC_ACCESS,Permissions.MANAGE_LIBRARY,Permissions.LISTENING_HISTORY };
 
-        //Récupération des morceaux Deezer
+        setImageBackground();
+    }
+
+    public void setImageBackground( ) {
+        ImageView[] background={findViewById(R.id.background1),findViewById(R.id.background2),findViewById(R.id.background3),findViewById(R.id.background4),findViewById(R.id.background5),findViewById(R.id.background6)};
+        RequestListener listener = new JsonRequestListener() {
+
+            public void onResult(Object result, Object requestId) {
+                List<Album> albumCovers=(List<Album>) result;
+                for(int i=0;i<6;i=i+1){
+                    if(albumCovers.get(i)!=null) Picasso.get().load(albumCovers.get(i).getBigImageUrl()).into(background[i]);
+                }
+                launchTitre();
+            }
+            public void onUnparsedResult(String requestResponse, Object requestId) {}
+            public void onException(Exception e, Object requestId) {}
+        };
+        DeezerRequest request = DeezerRequestFactory.requestArtistAlbums(artiste);
+        request.setId("myRequest");
+        deezerConnect.requestAsync(request,listener);
+    }
+
+    public void launchTitre(){
         RequestListener listener = new JsonRequestListener() {
 
             public void onResult(Object result, Object requestId) {
@@ -112,9 +130,7 @@ public class Game extends AppCompatActivity {
 
         // create the request
         DeezerRequest request = DeezerRequestFactory.requestArtistAlbums(artiste);
-        // set a requestId, that will be passed on the listener's callback methods
         request.setId("myRequest");
-        // launch the request asynchronously
         deezerConnect.requestAsync(request,listener);
     }
 
@@ -139,8 +155,8 @@ public class Game extends AppCompatActivity {
         t[5]=m6;
         t[6]=m7;
         t[7]=m8;
-        for(int i=0;i<t.length;i=i+1){
-            t[i].setSelected(true);
+        for (TextView textView : t) {
+            textView.setSelected(true);
         }
         return t;
     }
@@ -184,7 +200,6 @@ public class Game extends AppCompatActivity {
         if(mode.equals("Random")){
             List<String> randomList=new ArrayList<>();
             for(int i=0;i<8;i=i+1) randomList.add(String.valueOf(i+1));
-            //Mixing postitions randomly
             Collections.shuffle(randomList);
             for(int i=0;i<8;i=i+1) NumSong.add(new Song(song.get(i),randomList.get(i),randomList.get(i)));
         }
@@ -247,7 +262,7 @@ public class Game extends AppCompatActivity {
                             Song track=new Song(AlbumTracks.get(i).getShortTitle(),albums.get(id).getBigImageUrl(),AlbumTracks.get(i).getPreviewUrl(),AlbumTracks.get(i).getRank());
                             if(track.getRank()>100000){
                                 boolean ban=ban(track.getTitle());
-                                if(ban==false){
+                                if(!ban){
                                     songListR.add(track);
                                 }
 
@@ -267,43 +282,40 @@ public class Game extends AppCompatActivity {
         }
 
         //Mélange et création liste finale
-        new Thread(new Runnable() {
-            @Override
-            public void run() {
-                try {
-                    Thread.sleep(2000);
-                } catch (InterruptedException ie) {
-                    ie.printStackTrace();
-                    Thread.currentThread().interrupt();
-                } runOnUiThread(new Runnable() {
-                    @Override
-                    public void run() {
-                        if(mode.equals("Top")){
-                            ordre(mode,songList);
-                        }
-                        if(mode.equals("Random")){
-                            int i=0;
-                            List<Song> FinalList=new ArrayList<>();
-                            while(i<8){
-                                int index=algorithm();
-                                Song track=songListR.get(index);
-                                //On check que le morceau ne soit pas déjà dans la liste
-                                boolean doublon=false;
-                                for(int j=0;j<FinalList.size();j=j+1){
-                                    if(track.getTitle().equals(FinalList.get(j).getTitle())) doublon=true;
-                                }
-
-                                //On ajoute s'il n'y est pas
-                                if(!doublon){
-                                    FinalList.add(track);
-                                    i=i+1;
-                                }
-                            }
-                            ordre(mode,FinalList);
-                        }
+        new Thread(() -> {
+            try {
+                Thread.sleep(2000);
+            } catch (InterruptedException ie) {
+                ie.printStackTrace();
+                Thread.currentThread().interrupt();
+            } runOnUiThread(new Runnable() {
+                @Override
+                public void run() {
+                    if(mode.equals("Top")){
+                        ordre(mode,songList);
                     }
-                });
-            }
+                    if(mode.equals("Random")){
+                        int i=0;
+                        List<Song> FinalList=new ArrayList<>();
+                        while(i<8){
+                            int index=algorithm();
+                            Song track=songListR.get(index);
+                            //On check que le morceau ne soit pas déjà dans la liste
+                            boolean doublon=false;
+                            for(int j=0;j<FinalList.size();j=j+1){
+                                if(track.getTitle().equals(FinalList.get(j).getTitle())) doublon=true;
+                            }
+
+                            //On ajoute s'il n'y est pas
+                            if(!doublon){
+                                FinalList.add(track);
+                                i=i+1;
+                            }
+                        }
+                        ordre(mode,FinalList);
+                    }
+                }
+            });
         }).start();
     }
 
@@ -318,96 +330,42 @@ public class Game extends AppCompatActivity {
                 }
             }
         }
-        int index=Integer.parseInt(repartition.get(r.nextInt(repartition.size())));
-        return index;
+        return Integer.parseInt(repartition.get(r.nextInt(repartition.size())));
     }
 
     protected void animation(final int match,final int pos,List<Song> song){
         final float density = getResources().getDisplayMetrics().density;
         //Animation latérale
         if(match==4){
-            if(pos<=4){
-                Animation anim= AnimationUtils.loadAnimation(getApplicationContext(),R.anim.move_8_4_right);
-                for(int k=0;k<t.length/2;k=k+1){
-                    if(pos==k+1) t[k].startAnimation(anim);
-                }
-            }
-            else{
-                Animation anim= AnimationUtils.loadAnimation(getApplicationContext(),R.anim.move_8_4_left);
-                for(int k=t.length-1;k>=t.length/2;k=k-1){
-                    if(pos==k+1) t[k].startAnimation(anim);
-                }
-            }
-            //Animation verticale + new position X
-            new Thread(new Runnable() {
+            Animation anim;
+            if(pos<=4) {anim = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.move_8_4_right);}
+            else {anim = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.move_8_4_left);}
+            t[pos-1].startAnimation(anim);
+            anim.setAnimationListener(new Animation.AnimationListener() {
                 @Override
-                public void run() {
-                    try {
-                        Thread.sleep(950);
-                    } catch (InterruptedException ie) {
-                        ie.printStackTrace();
-                        Thread.currentThread().interrupt();
-                    } runOnUiThread(new Runnable() {
-                        @Override
-                        public void run() {
-                            float X=185*density;
-                            float X2=560*density;
-                            for(int i=0;i<t.length;i=i+1){
-                                if(pos==i+1 && pos<=4) t[i].setX(X);
-                                if(pos==i+1 && pos>4) t[i].setX(X2);
-                            }
-                            if(match==4){
-                                if(pos%2==0){
-                                    Animation anim2= AnimationUtils.loadAnimation(getApplicationContext(),R.anim.move_8_4_up);
-                                    for(int k=2;k<t.length+1;k=k+2){
-                                        if(pos==k) t[k-1].startAnimation(anim2);
-                                    }
-                                }
-                                else{
-                                    Animation anim2= AnimationUtils.loadAnimation(getApplicationContext(),R.anim.move_8_4_down);
-                                    for(int k=1;k<t.length+1;k=k+2){
-                                        if(pos==k) t[k-1].startAnimation(anim2);
-                                    }
-                                }
-                            }
-                        }
-                    });
-                }
-            }).start();
+                public void onAnimationStart(Animation animation) {}
 
-            //New position Y
-            new Thread(new Runnable() {
                 @Override
-                public void run() {
-                    try {
-                        Thread.sleep(1955);
-                    } catch (InterruptedException ie) {
-                        ie.printStackTrace();
-                        Thread.currentThread().interrupt();
-                    } runOnUiThread(new Runnable() {
+                public void onAnimationEnd(Animation animation) {
+                    float X;
+                    if(pos<=4) X=185*density;
+                    else X=560*density;
+                    t[pos-1].setX(X);
+                    Animation anim;
+                    if(pos%2!=0) {anim = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.move_8_4_down);}
+                    else  {anim = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.move_8_4_up);}
+                    t[pos-1].startAnimation(anim);
+                    anim.setAnimationListener(new Animation.AnimationListener() {
                         @Override
-                        public void run() {
-                            float X=185*density;
-                            float X2=560*density;
-                            float Y=150*density;
-                            float Y2=455*density;
-                            if(pos==1) m1.setX(X);
-                            if(pos==1) m1.setY(Y);
-                            if(pos==2) m2.setX(X);
-                            if(pos==2) m2.setY(Y);
-                            if(pos==3) m3.setX(X);
-                            if(pos==3) m3.setY(Y2);
-                            if(pos==4) m4.setX(X);
-                            if(pos==4) m4.setY(Y2);
-                            if(pos==5) m5.setX(X2);
-                            if(pos==5) m5.setY(Y);
-                            if(pos==6) m6.setX(X2);
-                            if(pos==6) m6.setY(Y);
-                            if(pos==7) m7.setX(X2);
-                            if(pos==7) m7.setY(Y2);
-                            if(pos==8) m8.setX(X2);
-                            if(pos==8) m8.setY(Y2);
+                        public void onAnimationStart(Animation animation) { }
 
+                        @Override
+                        public void onAnimationEnd(Animation animation) {
+                            float Y;
+                            Log.i("*****",pos+" ");
+                            if(pos==1 || pos==2 ||pos==5||pos==6 ) Y=145*density;
+                            else Y=460*density;
+                            t[pos-1].setY(Y);
                             LottieAnimationView a1=findViewById(R.id.branche821);
                             LottieAnimationView a2=findViewById(R.id.branche822);
                             LottieAnimationView a3=findViewById(R.id.branche823);
@@ -416,151 +374,111 @@ public class Game extends AppCompatActivity {
                             a2.playAnimation();
                             a3.playAnimation();
                             a4.playAnimation();
-
                         }
+
+                        @Override
+                        public void onAnimationRepeat(Animation animation) { }
                     });
+
                 }
-            }).start();
+
+                @Override
+                public void onAnimationRepeat(Animation animation) {
+
+                }
+            });
         }
 
         if(match==2){
-            for(int i=0;i<song.size();i=i+1){
-                for(int j=0;j<t.length;j=j+1){
-                    if(String.valueOf(t[j].getText()).equals(song.get(i).getTitle())){
-                        final int j2=j;
+            Animation anim=null;
+            if(pos<=4) {anim = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.move_8_2_right);}
+            else {anim = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.move_8_2_left);}
+            t[pos-1].startAnimation(anim);
+            anim.setAnimationListener(new Animation.AnimationListener() {
+                @Override
+                public void onAnimationStart(Animation animation) {}
 
-                        //Animation latérale
-                        if(j<4){
-                            Animation anim= AnimationUtils.loadAnimation(getApplicationContext(),R.anim.move_8_2_right);
-                            t[j].startAnimation(anim);
-                        }
-                        else{
-                            Animation anim= AnimationUtils.loadAnimation(getApplicationContext(),R.anim.move_8_2_left);
-                            t[j].startAnimation(anim);
-                        }
-
-                        //Animation verticale + new position X
-                        new Thread(new Runnable() {
-                            @Override
-                            public void run() {
-                                try {
-                                    Thread.sleep(950);
-                                } catch (InterruptedException ie) {
-                                    ie.printStackTrace();
-                                    Thread.currentThread().interrupt();
-                                } runOnUiThread(new Runnable() {
-                                    @Override
-                                    public void run() {
-                                        float X=250*density;
-                                        float X2=485*density;
-                                        if(j2<4) t[j2].setX(X);
-                                        else t[j2].setX(X2);
-                                        if(j2<2 || j2==4 || j2==5){
-                                            Animation anim2= AnimationUtils.loadAnimation(getApplicationContext(),R.anim.move_8_2_down);
-                                            t[j2].startAnimation(anim2);
-                                        }
-                                        else{
-                                            Animation anim2= AnimationUtils.loadAnimation(getApplicationContext(),R.anim.move_8_2_up);
-                                            t[j2].startAnimation(anim2);
-                                        }
-                                    }
-                                });
-                            }
-                        }).start();
-
-                        //New position Y
-                        new Thread(new Runnable() {
-                            @Override
-                            public void run() {
-                                try {
-                                    Thread.sleep(1955);
-                                } catch (InterruptedException ie) {
-                                    ie.printStackTrace();
-                                    Thread.currentThread().interrupt();
-                                } runOnUiThread(new Runnable() {
-                                    @Override
-                                    public void run() {
-                                        float X=245*density;
-                                        float X2=485*density;
-                                        float Y=305*density;
-                                        float Y2=305*density;
-                                        if(j2<4){
-                                            t[j2].setX(X);
-                                            t[j2].setY(Y);
-                                        }
-                                        else{
-                                            t[j2].setX(X2);
-                                            t[j2].setY(Y2);
-                                        }
-                                        LottieAnimationView a=findViewById(R.id.branchefinale);
-                                        a.setSpeed(0.5f);
-                                        a.playAnimation();
-                                    }
-                                });
-                            }
-                        }).start();
+                @Override
+                public void onAnimationEnd(Animation animation) {
+                    float X=250*density;
+                    float X2=485*density;
+                    if(pos<=4) t[pos-1].setX(X);
+                    else t[pos-1].setX(X2);
+                    Animation anim=null;
+                    if(pos<=2 || pos==5 || pos==6){
+                        anim= AnimationUtils.loadAnimation(getApplicationContext(),R.anim.move_8_2_down);
+                        t[pos-1].startAnimation(anim);
                     }
+                    else{
+                        anim= AnimationUtils.loadAnimation(getApplicationContext(),R.anim.move_8_2_up);
+                        t[pos-1].startAnimation(anim);
+                    }
+                    anim.setAnimationListener(new Animation.AnimationListener() {
+                        @Override
+                        public void onAnimationStart(Animation animation) { }
+
+                        @Override
+                        public void onAnimationEnd(Animation animation) {
+                            float Y=310*density;
+                            t[pos-1].setY(Y);
+                            LottieAnimationView a=findViewById(R.id.branchefinale);
+                            a.setSpeed(0.5f);
+                            a.playAnimation();
+                        }
+
+                        @Override
+                        public void onAnimationRepeat(Animation animation) { }
+                    });
+
                 }
-            }
+
+                @Override
+                public void onAnimationRepeat(Animation animation) {
+
+                }
+            });
         }
 
         if(match==1){
-            for(int i=0;i<song.size();i=i+1){
-                for(int j=0;j<t.length;j=j+1) {
-                    if (String.valueOf(t[j].getText()).equals(song.get(i).getTitle())) {
-                        final int j2=j;
-                        //Animation horizontale
-                        Animation anim= AnimationUtils.loadAnimation(getApplicationContext(),R.anim.move_8_1_right);
-                        Animation anim2= AnimationUtils.loadAnimation(getApplicationContext(),R.anim.move_8_1_left);
-                        if(j<4){
-                            t[j].startAnimation(anim);
+            Animation anim=null;
+            if(pos<=4) {anim = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.move_8_1_right);}
+            else {anim = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.move_8_1_left);}
+            t[pos-1].startAnimation(anim);
+            anim.setAnimationListener(new Animation.AnimationListener() {
+                @Override
+                public void onAnimationStart(Animation animation) {}
+
+                @Override
+                public void onAnimationEnd(Animation animation) {
+                    float X=350*density;
+                    t[pos-1].setX(X);
+                    Animation anim= AnimationUtils.loadAnimation(getApplicationContext(),R.anim.move_8_1_up);
+                    t[pos-1].startAnimation(anim);
+                    anim.setAnimationListener(new Animation.AnimationListener() {
+                        @Override
+                        public void onAnimationStart(Animation animation) { }
+
+                        @Override
+                        public void onAnimationEnd(Animation animation) {
+                            float X=360*density;
+                            float Y=240*density;
+                            t[pos-1].setX(X);
+                            t[pos-1].setY(Y);
+                            LottieAnimationView a=findViewById(R.id.winner);
+                            a.playAnimation();
                         }
-                        else{
-                            t[j].startAnimation(anim2);
-                        }
-                        new Thread(new Runnable() {
-                            @Override
-                            public void run() {
-                                try {
-                                    Thread.sleep(950);
-                                } catch (InterruptedException ie) {
-                                    ie.printStackTrace();
-                                    Thread.currentThread().interrupt();
-                                } runOnUiThread(new Runnable() {
-                                    @Override
-                                    public void run() {
-                                        float X=350*density;
-                                        t[j2].setX(X);
-                                        Animation anim2= AnimationUtils.loadAnimation(getApplicationContext(),R.anim.move_8_1_up);
-                                        t[j2].startAnimation(anim2);
-                                    }
-                                });
-                            }
-                        }).start();
-                        new Thread(new Runnable() {
-                            @Override
-                            public void run() {
-                                try {
-                                    Thread.sleep(2000);
-                                } catch (InterruptedException ie) {
-                                    ie.printStackTrace();
-                                    Thread.currentThread().interrupt();
-                                }runOnUiThread(new Runnable() {
-                                    @Override
-                                    public void run() {
-                                        float X=360*density;
-                                        float Y=240*density;
-                                        t[j2].setX(X);
-                                        t[j2].setY(Y);
-                                    }
-                                });
-                            }
-                        }).start();
-                        LottieAnimationView a=findViewById(R.id.winner);
-                        a.playAnimation();
-                    }
+
+                        @Override
+                        public void onAnimationRepeat(Animation animation) { }
+                    });
+
                 }
-            }
+
+                @Override
+                public void onAnimationRepeat(Animation animation) {
+
+                }
+            });
         }
     }
 
@@ -577,18 +495,19 @@ public class Game extends AppCompatActivity {
         LottieAnimationView a7=findViewById(R.id.branche847);
         LottieAnimationView a8=findViewById(R.id.branche848);
         LottieAnimationView[] tab={a1,a2,a3,a4,a5,a6,a7,a8};
-        for(int i=0;i<tab.length;i=i+1){
-            tab[i].setSpeed(0.5f);
-            tab[i].playAnimation();
+        for (LottieAnimationView lottieAnimationView : tab) {
+            lottieAnimationView.setSpeed(0.5f);
+            lottieAnimationView.playAnimation();
         }
 
         loading.setVisibility(View.GONE);
+
         Animation anim= AnimationUtils.loadAnimation(getApplicationContext(),R.anim.fade_in);
         findViewById(R.id.match).setVisibility(View.VISIBLE);
         findViewById(R.id.match).startAnimation(anim);
-        for(int i=0;i<t.length;i=i+1){
-            t[i].setVisibility(View.VISIBLE);
-            t[i].startAnimation(anim);
+        for (TextView textView : t) {
+            textView.setVisibility(View.VISIBLE);
+            textView.startAnimation(anim);
         }
     }
 
@@ -700,7 +619,7 @@ public class Game extends AppCompatActivity {
                             int i=0;
                             int score=0;
                             String key="";
-                            for (DocumentSnapshot doc : task.getResult()) {
+                            for (DocumentSnapshot doc : Objects.requireNonNull(task.getResult())) {
                                 i++;
                                 score=doc.getDouble("Score").intValue();
                                 key=doc.getId();
@@ -810,7 +729,7 @@ public class Game extends AppCompatActivity {
 
     protected boolean ban(String song){
         boolean banni=false;
-        if(song.indexOf("Remix")>-1 || song.indexOf("(Live")>-1 || song.indexOf("Live)")>-1 || song.indexOf("Reanimation")>-1){
+        if(song.contains("Remix") || song.contains("Live") || song.contains("Reanimation")){
             banni=true;
         }
         return banni;

@@ -5,7 +5,7 @@
     android:id="@+id/activity_music_list"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/gradient_list"
+    android:background="@drawable/backgroundappsmall"
     tools:context=".GameC.MusicList">
 
 
@@ -13,8 +13,8 @@
         android:id="@+id/MusicTitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="4dp"
-        android:fontFamily="@font/cartoon"
+        android:layout_marginTop="16dp"
+        android:fontFamily="@font/royalacid"
         android:text="Music"
         android:textColor="#FFFFFF"
         android:textSize="40dp"
@@ -22,7 +22,6 @@
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
-
 
     <HorizontalScrollView
         android:id="@+id/MusicChoice"
@@ -32,7 +31,7 @@
         android:orientation="horizontal"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.068"
+        app:layout_constraintVertical_bias="0.115"
         tools:layout_editor_absoluteX="0dp">
 
         <GridLayout
@@ -40,7 +39,7 @@
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:orientation="horizontal"
-            android:rowCount="1"/>
+            android:rowCount="1" />
 
     </HorizontalScrollView>
 

@@ -41,10 +41,6 @@ public class Fin extends AppCompatActivity {
 
         //Animated background
         ConstraintLayout constraintlayout=findViewById(R.id.layoutF);
-        AnimationDrawable animation= (AnimationDrawable) constraintlayout.getBackground();
-        animation.setEnterFadeDuration(2000);
-        animation.setExitFadeDuration(4000);
-        animation.start();
 
         ranking=findViewById(R.id.FinalRankingLayout);
         menu=(Button) findViewById(R.id.menu);

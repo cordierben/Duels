@@ -79,7 +79,7 @@ public class Connect extends AppCompatActivity {
         back.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent start=new Intent(getApplicationContext(), Menu.class);
+                Intent start=new Intent(getApplicationContext(), MainActivity.class);
                 startActivity(start);
                 finish();
             }

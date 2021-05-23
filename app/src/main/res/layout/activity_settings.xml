@@ -5,7 +5,7 @@
     android:id="@+id/layoutSettings"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/gradient_list"
+    android:background="@drawable/backgroundappsmall"
     tools:context=".Menu.Settings">
 
 
@@ -13,7 +13,7 @@
         android:id="@+id/textView13"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:fontFamily="@font/cartoon"
+        android:fontFamily="@font/royalacid"
         android:text="Settings"
         android:textColor="@android:color/white"
         android:textSize="45dp"
@@ -33,10 +33,10 @@
         android:textColor="@android:color/white"
         app:layout_constraintBottom_toTopOf="@+id/SignOut"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView13"
-        app:layout_constraintVertical_bias="0.072" />
+        app:layout_constraintVertical_bias="0.208" />
 
     <Button
         android:id="@+id/countryChangeSettings"
@@ -48,9 +48,10 @@
         android:textColor="@android:color/white"
         app:layout_constraintBottom_toTopOf="@+id/SignOut"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView13"
-        app:layout_constraintVertical_bias="0.256" />
+        app:layout_constraintVertical_bias="0.389" />
 
     <TextView
         android:layout_width="300dp"

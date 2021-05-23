@@ -35,10 +35,6 @@ public class GenreList extends AppCompatActivity {
 
         //Animated background
         ConstraintLayout constraintlayout=findViewById(R.id.layoutgenre);
-        AnimationDrawable animation= (AnimationDrawable) constraintlayout.getBackground();
-        animation.setEnterFadeDuration(2000);
-        animation.setExitFadeDuration(4000);
-        animation.start();
 
         //Récup data
         Intent intent=getIntent();

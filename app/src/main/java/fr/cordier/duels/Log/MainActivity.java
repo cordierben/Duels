@@ -137,7 +137,6 @@ public class MainActivity extends AppCompatActivity {
         DatabaseManager db=new DatabaseManager(this);
         List<String> info=db.selectUser();
         for(int i=0;i<info.size();i=i+3){
-            Log.i("******",info.get(i)+" "+info.get(i+1));
             if(info.get(i).equals("1")){
                 validation(info.get(i+1));
             }

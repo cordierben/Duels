@@ -5,7 +5,7 @@
     android:id="@+id/layoutstart"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/gradient_list"
+    android:background="@drawable/backgroundappsmall"
     tools:context=".Game.start">
 
 
@@ -13,10 +13,11 @@
         android:id="@+id/artiste"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="48dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="16dp"
+        android:fontFamily="@font/royalacid"
         android:gravity="center"
         android:text=""
-        android:fontFamily="@font/maven_pro"
         android:textAlignment="center"
         android:textColor="#FFFFFF"
         android:textSize="24dp"
@@ -28,7 +29,6 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="100dp"
-        android:fontFamily="@font/maven_pro"
         android:text="Game mode"
         android:textAlignment="center"
         android:textColor="@android:color/white"
@@ -42,6 +42,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="32dp"
         android:background="@drawable/round_corner"
+        android:paddingHorizontal="20dp"
         android:text="Top Tracks"
         android:textColor="@android:color/white"
         app:layout_constraintEnd_toEndOf="parent"
@@ -54,8 +55,9 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="6dp"
-        android:layout_marginTop="24dp"
+        android:layout_marginTop="52dp"
         android:background="@drawable/round_corner"
+        android:paddingHorizontal="20dp"
         android:text="Random"
         android:textColor="@android:color/white"
         app:layout_constraintEnd_toEndOf="parent"
@@ -67,7 +69,7 @@
         android:id="@+id/linearLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="430dp"
+        android:layout_marginTop="470dp"
         app:layout_constraintEnd_toStartOf="@+id/artiste"
         app:layout_constraintHorizontal_bias="0.403"
         app:layout_constraintStart_toStartOf="@+id/artiste"
@@ -131,22 +133,22 @@
         android:id="@+id/go"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="52dp"
+        android:layout_marginTop="92dp"
         android:background="@drawable/round_corner"
-        android:fontFamily="@font/maven_pro"
         android:text="Go!"
         android:textColor="@android:color/white"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/linearLayout" />
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout"
+        app:layout_constraintVertical_bias="0.0" />
 
     <TextView
         android:id="@+id/ntitre"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginBottom="12dp"
-        android:fontFamily="@font/maven_pro"
         android:text="Number of tracks"
         android:textAlignment="center"
         android:textColor="@android:color/white"
@@ -156,33 +158,19 @@
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent" />
 
-    <FrameLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:layout_constraintStart_toStartOf="parent"
+    <ImageView
+        android:id="@+id/backstart"
+        android:layout_width="35dp"
+        android:layout_height="35dp"
+        android:layout_gravity="center"
+        android:rotation="0"
+        android:src="@drawable/back2"
+        app:layout_constraintBottom_toTopOf="@+id/mode"
+        app:layout_constraintEnd_toStartOf="@+id/artiste"
+        app:layout_constraintHorizontal_bias="0.872"
+        app:layout_constraintStart_toEndOf="@+id/artiste"
         app:layout_constraintTop_toTopOf="parent"
-        android:layout_marginLeft="10dp"
-        android:layout_marginTop="10dp">
-
-        <TextView
-            android:id="@+id/backstart"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:background="@drawable/round_corner"
-            android:fontFamily="@font/maven_pro"
-            android:padding="10dp"
-            android:text="Pro"
-            android:textColor="#9A2EAF"
-            android:textSize="20dp" />
-
-        <ImageView
-            android:layout_width="35dp"
-            android:layout_height="35dp"
-            android:rotation="180"
-            android:layout_gravity="center"
-            android:src="@drawable/arrow"/>
-
-    </FrameLayout>
+        app:layout_constraintVertical_bias="0.153" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

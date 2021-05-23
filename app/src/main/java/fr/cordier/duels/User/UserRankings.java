@@ -37,7 +37,7 @@ import fr.cordier.duels.UiMenu.Menu;
 public class UserRankings extends AppCompatActivity {
 
     GridLayout grille;
-    TextView back;
+    ImageView back;
     EditText search;
     ImageView loupe;
     String Email;
@@ -50,10 +50,6 @@ public class UserRankings extends AppCompatActivity {
 
         //Animated background
         ConstraintLayout constraintlayout=findViewById(R.id.layoutRankings);
-        AnimationDrawable animation= (AnimationDrawable) constraintlayout.getBackground();
-        animation.setEnterFadeDuration(2000);
-        animation.setExitFadeDuration(4000);
-        animation.start();
 
         //Recup data
         Intent intent=getIntent();
@@ -61,7 +57,7 @@ public class UserRankings extends AppCompatActivity {
 
         grille=(GridLayout) findViewById(R.id.gridRanking);
 
-        back=(TextView) findViewById(R.id.UserRankingsToInfo);
+        back=(ImageView) findViewById(R.id.UserRankingsToInfo);
         back.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

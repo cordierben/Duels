@@ -1,6 +1,7 @@
 package fr.cordier.duels.UiMenu.dashboard;
 
 import android.animation.LayoutTransition;
+import android.content.Context;
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Build;
@@ -56,20 +57,11 @@ public class MenuFragment extends Fragment {
                              ViewGroup container, Bundle savedInstanceState) {
         MenuViewModel = ViewModelProviders.of(this).get(MenuViewModel.class);
         root = inflater.inflate(R.layout.fragment_menu, container, false);
-        /*final TextView textView = root.findViewById(R.id.textView11);
-        MenuViewModel.getText().observe(getViewLifecycleOwner(), new Observer<String>() {
-            @Override
-            public void onChanged(@Nullable String s) {
-                textView.setText(s);
-            }
-        });*/
-
 
         //Récup data
         r=(Menu) getActivity();
         Intent intent=r.getIntent();
         Email=intent.getStringExtra("Email");
-        Log.i("*****",Email);
 
         //Initialisation Widgets
 
@@ -143,11 +135,18 @@ public class MenuFragment extends Fragment {
         }
     };
 
+    @Override
+    public void onDestroyView() {
+        super.onDestroyView();
+        handler.removeCallbacks(runnable);
+    }
+
     protected void AnimationButton(){
         play.setVisibility(View.VISIBLE);
         Animation slide= AnimationUtils.loadAnimation(r.getApplicationContext(), R.anim.slide_button);
         play.startAnimation(slide);
     }
+
 
     protected void ArtistProp(){
         Random r=new Random();
@@ -158,7 +157,7 @@ public class MenuFragment extends Fragment {
 
             public void onResult(Object result, Object requestId) {
                 Artist artiste= (com.deezer.sdk.model.Artist) result;
-                TextView txt=new TextView(getContext());
+                TextView txt=new TextView(getActivity().getApplicationContext());
                 txt.setTextColor(Color.parseColor("#FFFFFF"));
                 txt.setTextSize(20);
                 txt.setGravity(Gravity.CENTER_VERTICAL);
@@ -170,11 +169,11 @@ public class MenuFragment extends Fragment {
                         start.putExtra("NomArtiste",artiste.getName());
                         start.putExtra("IdArtiste",String.valueOf(artiste.getId()));
                         startActivity(start);
-                        getActivity().getSupportFragmentManager().popBackStack();
+
                     }
                 });
 
-                ImageView im=new ImageView(getContext());
+                ImageView im=new ImageView(getActivity().getApplicationContext());
                 LinearLayout.LayoutParams layoutParams = new LinearLayout.LayoutParams(180,180);
                 layoutParams.setMargins(30,0,30,0);
                 im.setLayoutParams(layoutParams);
@@ -200,7 +199,7 @@ public class MenuFragment extends Fragment {
                                 List<Track> tracks= (List<com.deezer.sdk.model.Track>) result;
                                 if(tracks.size()>=2){
                                     if(tracks.get(0).getShortTitle().equals(tracks.get(1).getShortTitle())){
-                                        txt.setText(artiste.getName()+"\n"+tracks.get(0).getShortTitle()+","+tracks.get(2).getShortTitle()+",...");
+                                        txt.setText(artiste.getName()+"\n"+tracks.get(0).getShortTitle()+", "+tracks.get(2).getShortTitle()+", ...");
                                     }
                                     else{
                                         txt.setText(artiste.getName()+"\n"+tracks.get(0).getShortTitle()+","+tracks.get(1).getShortTitle()+",...");

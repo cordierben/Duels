@@ -37,7 +37,7 @@ public class UserScores extends AppCompatActivity {
 
     TextView classement;
     ImageView photo;
-    TextView back;
+    ImageView back;
     TextView artiste;
     String Email;
     LinearLayout layout;
@@ -50,10 +50,6 @@ public class UserScores extends AppCompatActivity {
 
         //Animated background
         ConstraintLayout constraintlayout=findViewById(R.id.layoutScore);
-        AnimationDrawable animation= (AnimationDrawable) constraintlayout.getBackground();
-        animation.setEnterFadeDuration(2000);
-        animation.setExitFadeDuration(4000);
-        animation.start();
 
         //Recup data
         Intent intent=getIntent();
@@ -67,15 +63,12 @@ public class UserScores extends AppCompatActivity {
         artiste=(TextView) findViewById(R.id.UserScoreArtist);
         artiste.setText(Artiste);
         Picasso.get().load(Image).into(photo);
-        back=(TextView) findViewById(R.id.UserScoreToUserRankings);
-        back.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent start=new Intent(getApplicationContext(), Menu.class);
-                start.putExtra("Email",Email);
-                startActivity(start);
-                finish();
-            }
+        back=(ImageView) findViewById(R.id.UserScoreToUserRankings);
+        back.setOnClickListener(v -> {
+            Intent start=new Intent(getApplicationContext(), Menu.class);
+            start.putExtra("Email",Email);
+            startActivity(start);
+            finish();
         });
 
         FirebaseFirestore ff=FirebaseFirestore.getInstance();

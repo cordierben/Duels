@@ -3,10 +3,17 @@ package fr.cordier.duels.Game;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.constraintlayout.widget.ConstraintLayout;
+import androidx.core.content.ContextCompat;
 
 import android.content.Intent;
 import android.content.res.AssetManager;
+import android.graphics.BitmapShader;
 import android.graphics.Color;
+import android.graphics.Paint;
+import android.graphics.Point;
+import android.graphics.RectF;
+import android.graphics.Shader;
+import android.graphics.Typeface;
 import android.graphics.drawable.AnimationDrawable;
 import android.media.Image;
 import android.os.Bundle;
@@ -21,13 +28,17 @@ import android.view.Gravity;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.ViewParent;
 import android.view.WindowManager;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.FrameLayout;
 import android.widget.GridLayout;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 import android.widget.ScrollView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -50,7 +61,9 @@ import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.Query;
 import com.google.firebase.firestore.QuerySnapshot;
+import com.makeramen.roundedimageview.RoundedImageView;
 import com.squareup.picasso.Picasso;
+import com.squareup.picasso.Transformation;
 
 import java.io.BufferedReader;
 import java.io.File;
@@ -66,22 +79,23 @@ import java.util.List;
 import java.util.Map;
 
 import fr.cordier.duels.Class.Artist;
+import fr.cordier.duels.Class.RoundedTransform;
 import fr.cordier.duels.R;
 import fr.cordier.duels.UiMenu.Menu;
+import jp.wasabeef.blurry.Blurry;
 
 public class GroupList extends AppCompatActivity {
 
 
-    TextView Back;
+    ImageView Back;
     GridLayout grille;
     ScrollView listG;
     EditText search;
     ImageView loupe;
     String Email;
-    ImageView mvt1,mvt2,mvt3,mvt4,mvt5,mvt6;
     WaveSideBar sidebar;
-    String[] indexTab={"1","A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T","U","V","W","X","Y","Z","#"};
-    int[] pos=new int[28];
+    String[] indexTab={"1","A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T","U","V","W","X","Y","Z"};
+    int[] pos=new int[27];
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -89,29 +103,19 @@ public class GroupList extends AppCompatActivity {
         setContentView(R.layout.activity_group_list);
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
 
-        //Animated background
-        ConstraintLayout constraintlayout=findViewById(R.id.layoutgroup);
-        AnimationDrawable animation= (AnimationDrawable) constraintlayout.getBackground();
-        animation.setEnterFadeDuration(2000);
-        animation.setExitFadeDuration(4000);
-        animation.start();
-
-        for(int i=0;i<28;i=i+1)pos[i]=0;
+        for(int i=0;i<27;i=i+1)pos[i]=0;
 
         //Recuperation données
         Intent intent=getIntent();
         Email=intent.getStringExtra("Email");
 
         //Initialisation Widget
-        Back=(TextView) findViewById(R.id.back);
-        Back.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent start=new Intent(getApplicationContext(), Menu.class);
-                start.putExtra("Email",Email);
-                startActivity(start);
-                finish();
-            }
+        Back=(ImageView) findViewById(R.id.back);
+        Back.setOnClickListener(v -> {
+            Intent start=new Intent(getApplicationContext(), Menu.class);
+            start.putExtra("Email",Email);
+            startActivity(start);
+            finish();
         });
 
         listG=(ScrollView) findViewById(R.id.listG);
@@ -119,37 +123,24 @@ public class GroupList extends AppCompatActivity {
         search=(EditText) findViewById(R.id.search);
         loupe=(ImageView) findViewById(R.id.loupe);
         sidebar=findViewById(R.id.side_bar);
-        sidebar.setIndexItems("1","A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T","U","V","W","X","Y","Z","#");
-        sidebar.setOnSelectIndexItemListener(new WaveSideBar.OnSelectIndexItemListener() {
-            @Override
-            public void onSelectIndexItem(String index) {
-                for(int i=0;i<indexTab.length;i=i+1){
-                    Log.i("****",pos[i]+" "+indexTab[i]);
-                    if(index.equals(indexTab[i])){
-                        listG.scrollTo(0,pos[i]);
-                    }
-                }
-                if(index.equals("1")) grille.scrollTo(0,0);
+        sidebar.setIndexItems("1","A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T","U","V","W","X","Y","Z");
 
+        sidebar.setOnSelectIndexItemListener(index -> {
+            for(int i=0;i<indexTab.length;i=i+1){
+                if(index.equals(indexTab[i])){
+                    listG.scrollTo(0,pos[i]);
+                }
             }
         });
 
 
         //Récupération artistes
         SearchArtist();
-        search.setOnFocusChangeListener(new View.OnFocusChangeListener() {
-            @Override
-            public void onFocusChange(View view, boolean b) {
-                search.setText("");
-            }
-        });
+        search.setOnFocusChangeListener((view, b) -> search.setText(""));
 
-        loupe.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                String nameL=String.valueOf(search.getText());
-                FindArtist(nameL);
-            }
+        loupe.setOnClickListener(v -> {
+            String nameL=String.valueOf(search.getText());
+            FindArtist(nameL);
         });
 
         search.addTextChangedListener(new TextWatcher() {
@@ -181,7 +172,6 @@ public class GroupList extends AppCompatActivity {
             InputStreamReader inputStreamReader = new InputStreamReader(fileInputStream);
 
             BufferedReader bufferedReader = new BufferedReader(inputStreamReader);
-            StringBuffer stringBuffer = new StringBuffer();
 
             String ligne;
             while ((ligne = bufferedReader.readLine()) != null) {
@@ -192,8 +182,6 @@ public class GroupList extends AppCompatActivity {
                     data.add(artiste);
                 }
             }
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -208,10 +196,9 @@ public class GroupList extends AppCompatActivity {
                 InputStreamReader inputStreamReader = new InputStreamReader(fileInputStream);
 
                 BufferedReader bufferedReader = new BufferedReader(inputStreamReader);
-                StringBuffer stringBuffer = new StringBuffer();
 
                 String ligne;
-                while ((ligne = bufferedReader.readLine()) != null) {
+                while (bufferedReader.readLine() != null) {
                     ligne = bufferedReader.readLine();
                     if(ligne!=null){
                         String[] values=ligne.split(";");
@@ -221,8 +208,6 @@ public class GroupList extends AppCompatActivity {
                         }
                     }
                 }
-            } catch (FileNotFoundException e) {
-                e.printStackTrace();
             } catch (IOException e) {
                 e.printStackTrace();
             }
@@ -266,56 +251,58 @@ public class GroupList extends AppCompatActivity {
 
     public void liste(List<Artist> artist){
         grille.removeAllViews();
+        final int density = Math.round(getResources().getDisplayMetrics().density);
+
         for(int i=0;i<artist.size();i=i+1){
             final int id=i;
-            ImageView im=new ImageView(getApplicationContext());
-            Picasso.get().load(artist.get(i).getImage()).into(im);
-            grille.addView(im);
 
-            TextView txt=new TextView(getApplicationContext());
-            ViewGroup.LayoutParams paramtxt=new ViewGroup.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
-            txt.setLayoutParams(paramtxt);
+            RelativeLayout rLayout = new RelativeLayout(this);
+            RelativeLayout.LayoutParams rlParams = new RelativeLayout.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
+            rLayout.setGravity(Gravity.CENTER);
+            rLayout.setLayoutParams(rlParams);
+
+            ImageView im= new ImageView(this);
+            RelativeLayout.LayoutParams imParams = new RelativeLayout.LayoutParams(density*130,density*130);
+            im.setLayoutParams(imParams);
+            Picasso.get().load(artist.get(i).getImage()).transform(new RoundedTransform()).into(im);
+            im.setPadding(10,10,10,10);
+            imParams.setMargins(density*10,0,density*10,0);
+            rLayout.addView(im);
+
+            RelativeLayout.LayoutParams tParams = new RelativeLayout.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
+            tParams.addRule(RelativeLayout.CENTER_HORIZONTAL, RelativeLayout.TRUE);
+            tParams.addRule(RelativeLayout.ALIGN_PARENT_BOTTOM, RelativeLayout.TRUE);
+            TextView txt=new TextView(this);
             String name=artist.get(i).getName();
-            if(name.length()>15){
-                name=name.replaceFirst(" ","\n");
-            }
-            txt.setTextColor(Color.parseColor("#FFFFFF"));
+            if(name.length()>15) name=name.replaceFirst(" ","\n");
+            txt.setTextColor(Color.WHITE);
+            txt.setTypeface(Typeface.DEFAULT_BOLD);
             txt.setText(name);
+            txt.setTextAlignment(View.TEXT_ALIGNMENT_CENTER);
+            txt.setTextSize(18);
+            txt.setLayoutParams(tParams);
+            rLayout.addView(txt);
 
-            txt.setTextSize(25);
-            grille.addView(txt);
+            grille.addView(rLayout);
 
-            GridLayout.LayoutParams params = new GridLayout.LayoutParams(txt.getLayoutParams());
-            params.setGravity(Gravity.CENTER_VERTICAL);
-            txt.setLayoutParams(params);
-
-            im.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    Intent start = new Intent(getApplicationContext(), fr.cordier.duels.Game.start.class);
-                    start.putExtra("Email",Email);
-                    start.putExtra("NomArtiste", String.valueOf(txt.getText()).replace("\n"," "));
-                    start.putExtra("IdArtiste", String.valueOf(artist.get(id).getId()));
-                    startActivity(start);
-                    finish();
-                }
+            im.setOnClickListener(v -> {
+                Intent start = new Intent(getApplicationContext(), fr.cordier.duels.Game.start.class);
+                start.putExtra("Email",Email);
+                start.putExtra("NomArtiste", String.valueOf(txt.getText()).replace("\n"," "));
+                start.putExtra("IdArtiste", String.valueOf(artist.get(id).getId()));
+                startActivity(start);
+                finish();
             });
-            txt.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    Intent start = new Intent(getApplicationContext(), start.class);
-                    start.putExtra("Email",Email);
-                    start.putExtra("NomArtiste", String.valueOf(txt.getText()));
-                    start.putExtra("IdArtiste", String.valueOf(artist.get(id).getId()));
-                    startActivity(start);
-                    finish();
-                }
+            txt.setOnClickListener(v -> {
+                Intent start = new Intent(getApplicationContext(), start.class);
+                start.putExtra("Email",Email);
+                start.putExtra("NomArtiste", String.valueOf(txt.getText()));
+                start.putExtra("IdArtiste", String.valueOf(artist.get(id).getId()));
+                startActivity(start);
+                finish();
             });
 
             posScroll(artist.get(i).getName());
-        }
-        for(int i=1;i<pos.length;i=i+1){
-            pos[i]=pos[i-1]+pos[i];
         }
         for(int i=0;i<10;i=i+1){
             TextView txt=new TextView(getApplicationContext());
@@ -325,70 +312,16 @@ public class GroupList extends AppCompatActivity {
 
     protected void posScroll(String name){
         String first=name.substring(0,1);
-        for(int i=0;i<indexTab.length;i=i+1){
+        for(int i=1;i<indexTab.length-1;i=i+1){
             if(first.equals(indexTab[i])){
-                pos[i+1]=pos[i+1]+266;
-            }
-        }
-        try {
-            Integer.parseInt(first);
-            pos[1]=pos[1]+266;
-        } catch (NumberFormatException nfe) {
-
-        }
-    }
-
-    private void anim2(int a){
-        final float density = getResources().getDisplayMetrics().density;
-        mvt1=findViewById(R.id.mvt1);
-        mvt1.setX(420*density);
-        mvt1.setY(220*density);
-        mvt2=findViewById(R.id.mvt2);
-        mvt2.setX(420*density);
-        mvt2.setY(350*density);
-        mvt3=findViewById(R.id.mvt3);
-        mvt3.setX(420*density);
-        mvt3.setY(500*density);
-        mvt4=findViewById(R.id.mvt4);
-        mvt4.setX(-40*density);
-        mvt4.setY(250*density);
-        mvt5=findViewById(R.id.mvt5);
-        mvt5.setX(200*density);
-        mvt5.setY(750*density);
-        mvt6=findViewById(R.id.mvt6);
-        mvt6.setX(230*density);
-        mvt6.setY(-40*density);
-        ImageView[] mvt={mvt1,mvt4,mvt3,mvt5,mvt2,mvt6};
-        Animation anim1= AnimationUtils.loadAnimation(getApplicationContext(),R.anim.note_move_1);
-        Animation anim2= AnimationUtils.loadAnimation(getApplicationContext(),R.anim.note_move_2);
-        Animation anim3= AnimationUtils.loadAnimation(getApplicationContext(),R.anim.note_move_3);
-        Animation anim4= AnimationUtils.loadAnimation(getApplicationContext(),R.anim.note_move_4);
-        Animation anim5= AnimationUtils.loadAnimation(getApplicationContext(),R.anim.note_move_5);
-        Animation anim6= AnimationUtils.loadAnimation(getApplicationContext(),R.anim.note_move_6);
-        Animation[] anim={anim1,anim4,anim3,anim5,anim2,anim6};
-        new Thread(new Runnable() {
-            @Override
-            public void run() {
-                try {
-                    Thread.sleep(6000);
-                } catch (InterruptedException e) {
-                    e.printStackTrace();
+                for(int j=i;j<indexTab.length-1;j=j+1){
+                    pos[j+1]+=98;
                 }
-                runOnUiThread(new Runnable() {
-                    @Override
-                    public void run() {
-                        mvt[a].startAnimation(anim[a]);
-                        if(a==5){
-                            anim2(0);
-                        }else{
-                            anim2(a+1);
-                        }
-                    }
-                });
             }
-        }).start();
-
+        }
     }
+
+
 
     @Override
     public void onBackPressed() {

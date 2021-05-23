@@ -49,6 +49,7 @@ import fr.cordier.duels.Class.DatabaseManager;
 import fr.cordier.duels.Class.Song;
 import fr.cordier.duels.Menu.GenreList;
 import fr.cordier.duels.R;
+import fr.cordier.duels.UiMenu.Menu;
 
 public class Game32 extends AppCompatActivity {
 
@@ -324,71 +325,40 @@ public class Game32 extends AppCompatActivity {
             tab[i].startAnimation(anim);
         }
 
+        TextView title=findViewById(R.id.gameTitle);
+        title.setVisibility(View.VISIBLE);
+        title.startAnimation(anim);
 
     }
 
     protected void animation(final int match,final int pos,List<Song> song) {
         final float density = getResources().getDisplayMetrics().density;
 
-        if (match == 16) {
-            if (pos <= 16) {
-                Animation anim = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.move_32_16_right);
-                for (int k = 0; k < t.length / 2; k = k + 1) {
-                    if (pos == k + 1) t[k].startAnimation(anim);
-                }
-            } else {
-                Animation anim = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.move_32_16_left);
-                for (int k = t.length - 1; k >= t.length / 2; k = k - 1) {
-                    if (pos == k + 1) t[k].startAnimation(anim);
-                }
-            }
-            //Animation verticale + new position X
-            new Thread(new Runnable() {
+        if(match==16){
+            Animation anim;
+            if(pos<=16) {anim = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.move_32_16_right);}
+            else {anim = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.move_32_16_left);}
+            t[pos-1].startAnimation(anim);
+            anim.setAnimationListener(new Animation.AnimationListener() {
                 @Override
-                public void run() {
-                    try {
-                        Thread.sleep(950);
-                    } catch (InterruptedException e) {
-                        e.printStackTrace();
-                    }
-                    runOnUiThread(new Runnable() {
-                        @Override
-                        public void run() {
-                            float X = 140 * density;
-                            float X2 = 690 * density;
-                            for (int i = 0; i < t.length; i = i + 1) {
-                                if (pos == i + 1 && pos <= 16) t[i].setX(X);
-                                if (pos == i + 1 && pos > 16) t[i].setX(X2);
-                            }
-                            if (pos % 2 == 0) {
-                                Animation anim2 = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.move_32_16_up);
-                                for (int k = 2; k < t.length + 1; k = k + 2) {
-                                    if (pos == k) t[k - 1].startAnimation(anim2);
-                                }
-                            } else {
-                                Animation anim2 = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.move_32_16_down);
-                                for (int k = 1; k < t.length + 1; k = k + 2) {
-                                    if (pos == k) t[k - 1].startAnimation(anim2);
-                                }
-                            }
-                        }
-                    });
-                }
-            }).start();
-            //New position Y
-            new Thread(new Runnable() {
+                public void onAnimationStart(Animation animation) {}
+
                 @Override
-                public void run() {
-                    try {
-                        Thread.sleep(1955);
-                    } catch (InterruptedException e) {
-                        e.printStackTrace();
-                    }
-                    runOnUiThread(new Runnable() {
+                public void onAnimationEnd(Animation animation) {
+                    float X;
+                    if(pos<=16) X=140*density;
+                    else X=690*density;
+                    t[pos-1].setX(X);
+                    Animation anim;
+                    if(pos%2!=0) {anim = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.move_32_16_down);}
+                    else  {anim = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.move_32_16_up);}
+                    t[pos-1].startAnimation(anim);
+                    anim.setAnimationListener(new Animation.AnimationListener() {
                         @Override
-                        public void run() {
-                            float X = 140 * density;
-                            float X2 = 690 * density;
+                        public void onAnimationStart(Animation animation) { }
+
+                        @Override
+                        public void onAnimationEnd(Animation animation) {
                             float Y = 85 * density;
                             float Y2 = 215 * density;
                             float Y3 = 325 * density;
@@ -397,26 +367,22 @@ public class Game32 extends AppCompatActivity {
                             float Y6 = 685 * density;
                             float Y7 = 805 * density;
                             float Y8 = 925 * density;
-                            for (int i = 0; i < t.length; i = i + 1) {
-                                if (pos <= 16 && pos == i+1) t[i].setX(X);
-                                if (pos > 16 && pos == i+1) t[i].setX(X2);
-                                if ((pos == i+1) && (pos == 1 || pos == 2 || pos == 17 || pos == 18))
-                                    t[i].setY(Y);
-                                if ((pos == i+1) && (pos == 3 || pos == 4 || pos == 19 || pos == 20))
-                                    t[i].setY(Y2);
-                                if ((pos == i+1) && (pos == 5 || pos == 6 || pos == 21 || pos == 22))
-                                    t[i].setY(Y3);
-                                if ((pos == i+1) && (pos == 7 || pos == 8 || pos == 23 || pos == 24))
-                                    t[i].setY(Y4);
-                                if ((pos == i+1) && (pos == 9 || pos == 10 || pos == 25 || pos == 26))
-                                    t[i].setY(Y5);
-                                if ((pos == i+1) && (pos == 11 || pos == 12 || pos == 27 || pos == 28))
-                                    t[i].setY(Y6);
-                                if ((pos == i+1) && (pos == 13 || pos == 14 || pos == 29 || pos == 30))
-                                    t[i].setY(Y7);
-                                if ((pos == i+1) && (pos == 15 || pos == 16 || pos == 31 || pos == 32))
-                                    t[i].setY(Y8);
-                            }
+                            if ((pos == 1 || pos == 2 || pos == 17 || pos == 18))
+                                t[pos-1].setY(Y);
+                            if ((pos == 3 || pos == 4 || pos == 19 || pos == 20))
+                                t[pos-1].setY(Y2);
+                            if ((pos == 5 || pos == 6 || pos == 21 || pos == 22))
+                                t[pos-1].setY(Y3);
+                            if ((pos == 7 || pos == 8 || pos == 23 || pos == 24))
+                                t[pos-1].setY(Y4);
+                            if ((pos == 9 || pos == 10 || pos == 25 || pos == 26))
+                                t[pos-1].setY(Y5);
+                            if ((pos == 11 || pos == 12 || pos == 27 || pos == 28))
+                                t[pos-1].setY(Y6);
+                            if ((pos == 13 || pos == 14 || pos == 29 || pos == 30))
+                                t[pos-1].setY(Y7);
+                            if ((pos == 15 || pos == 16 || pos == 31 || pos == 32))
+                                t[pos-1].setY(Y8);
                             LottieAnimationView a1=findViewById(R.id.branche3281);
                             LottieAnimationView a2=findViewById(R.id.branche3282);
                             LottieAnimationView a3=findViewById(R.id.branche3283);
@@ -434,106 +400,66 @@ public class Game32 extends AppCompatActivity {
                             LottieAnimationView a15=findViewById(R.id.branche32815);
                             LottieAnimationView a16=findViewById(R.id.branche32816);
                             LottieAnimationView[] tab8={a1,a2,a3,a4,a5,a6,a7,a8,a9,a10,a11,a12,a13,a14,a15,a16};
-                            for(int i=0;i<tab8.length;i=i+1){
-                                tab8[i].setSpeed(0.5f);
-                                tab8[i].playAnimation();
+                            for (LottieAnimationView lottieAnimationView : tab8) {
+                                lottieAnimationView.setSpeed(0.5f);
+                                lottieAnimationView.playAnimation();
                             }
                         }
+
+                        @Override
+                        public void onAnimationRepeat(Animation animation) { }
                     });
+
                 }
-            }).start();
+
+                @Override
+                public void onAnimationRepeat(Animation animation) {
+
+                }
+            });
         }
 
-        if (match == 8) {
-
-            //Animation horizontale
-            for (int k = 0; k < t.length; k = k + 1) {
-                if (pos == k+1) {
-                    if(pos<=16){
-                        Animation anim2 = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.move_32_8_right);
-                        t[k].startAnimation(anim2);
-                    } else {
-                        Animation anim2 = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.move_32_8_left);
-                        t[k].startAnimation(anim2);
-                    }
-                }
-            }
-
-            new Thread(new Runnable() {
+        if(match==8){
+            Animation anim=null;
+            if(pos<=16) {anim = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.move_32_8_right);}
+            else {anim = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.move_32_8_left);}
+            t[pos-1].startAnimation(anim);
+            anim.setAnimationListener(new Animation.AnimationListener() {
                 @Override
-                public void run() {
-                    try {
-                        Thread.sleep(950);
-                    } catch (InterruptedException e) {
-                        e.printStackTrace();
-                    }
-                    runOnUiThread(new Runnable() {
-                        @Override
-                        public void run() {
-                            float X = 190 * density;
-                            float X2 = 620 * density;
-                            //new position X
-                            for (int k = 0; k < t.length; k = k + 1) {
-                                if (pos == k+1) {
-                                    if(pos<=16){
-                                        t[k].setX(X);
-                                    } else {
-                                        t[k].setX(X2);
-                                    }
-                                }
-                            }
+                public void onAnimationStart(Animation animation) {}
 
-                            //Animations verticales
-                            for (int k = 0; k < t.length; k = k + 1) {
-                                if(pos==k+1){
-                                    if(pos==1 || pos==2 || pos==5 || pos==6 || pos==9||pos==10 ||
-                                            pos==13 || pos==14 || pos==17 || pos==18 ||
-                                            pos==21 || pos==22 || pos==25 || pos==26 || pos==29||pos==30){
-                                        Animation anim2 = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.move_32_8_down);
-                                        t[k].startAnimation(anim2);
-                                    } else {
-                                        Animation anim2 = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.move_32_8_up);
-                                        t[k].startAnimation(anim2);
-                                    }
-                                }
-
-                            }
-                        }
-                    });
-                }
-            }).start();
-
-            //New position Y
-            new Thread(new Runnable() {
                 @Override
-                public void run() {
-                    try {
-                        Thread.sleep(1955);
-                    } catch (InterruptedException e) {
-                        e.printStackTrace();
-                    }
-                    runOnUiThread(new Runnable() {
+                public void onAnimationEnd(Animation animation) {
+                    float X;
+                    if(pos<=16) X=200*density;
+                    else X=620*density;
+                    t[pos-1].setX(X);
+                    Animation anim;
+                    if(pos==1 || pos==2 || pos==5 || pos==6 || pos==9||pos==10 || pos==13 || pos==14 || pos==17 || pos==18 || pos==21 || pos==22 || pos==25 || pos==26 || pos==29||pos==30) {
+                        anim = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.move_32_8_down);
+                    } else {anim = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.move_32_8_up);}
+                    t[pos-1].startAnimation(anim);
+                    anim.setAnimationListener(new Animation.AnimationListener() {
                         @Override
-                        public void run() {
+                        public void onAnimationStart(Animation animation) { }
+
+                        @Override
+                        public void onAnimationEnd(Animation animation) {
                             float Y = 150 * density;
-                            float Y2 = 385 * density;
+                            float Y2 = 390 * density;
                             float Y3 = 625 * density;
-                            float Y4 = 865 * density;
-                            for (int k = 0; k < t.length; k = k + 1) {
-                                if(pos==k+1){
-                                    if(pos<=4 || (pos>16 && pos<=20)){
-                                        t[k].setY(Y);
-                                    }
-                                    if((pos>4 && pos<=8) || (pos>20 && pos<=24)){
-                                        t[k].setY(Y2);
-                                    }
-                                    if((pos>8 && pos<=12) || (pos>24 && pos<=28)){
-                                        t[k].setY(Y3);
-                                    }
-                                    if((pos>12&&pos<=16) || (pos>28)){
-                                        t[k].setY(Y4);
-                                    }
-                                }
+                            float Y4 = 870 * density;
+                            if(pos<=4 || (pos>16 && pos<=20)){
+                                t[pos-1].setY(Y);
+                            }
+                            if((pos>4 && pos<=8) || (pos>20 && pos<=24)){
+                                t[pos-1].setY(Y2);
+                            }
+                            if((pos>8 && pos<=12) || (pos>24 && pos<=28)){
+                                t[pos-1].setY(Y3);
+                            }
+                            if((pos>12&&pos<=16) || (pos>28)){
+                                t[pos-1].setY(Y4);
                             }
                             LottieAnimationView a1=findViewById(R.id.branche3241);
                             LottieAnimationView a2=findViewById(R.id.branche3242);
@@ -552,91 +478,51 @@ public class Game32 extends AppCompatActivity {
                             a7.playAnimation();
                             a8.playAnimation();
                         }
+
+                        @Override
+                        public void onAnimationRepeat(Animation animation) { }
                     });
+
                 }
-            }).start();
+
+                @Override
+                public void onAnimationRepeat(Animation animation) {
+
+                }
+            });
         }
 
-        if (match == 4) {
-            //Animation horizontale
-            for (int k = 0; k < t.length; k = k + 1) {
-                if(pos==k+1){
-                    if(pos<=16){
-                        Animation anim2 = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.move_32_4_right);
-                        t[k].startAnimation(anim2);
-                    } else{
-                        Animation anim2 = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.move_32_4_left);
-                        t[k].startAnimation(anim2);
-                    }
-                }
-            }
-
-            //Animation verticale
-            new Thread(new Runnable() {
+        if(match==4){
+            Animation anim=null;
+            if(pos<=16) {anim = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.move_32_4_right);}
+            else {anim = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.move_32_4_left);}
+            t[pos-1].startAnimation(anim);
+            anim.setAnimationListener(new Animation.AnimationListener() {
                 @Override
-                public void run() {
-                    try {
-                        Thread.sleep(950);
-                    } catch (InterruptedException e) {
-                        e.printStackTrace();
-                    }
-                    runOnUiThread(new Runnable() {
-                        @Override
-                        public void run() {
+                public void onAnimationStart(Animation animation) {}
 
-                            //Position X
-                            float X = 260 * density;
-                            float X2 = 560 * density;
-                            for (int k = 0; k < t.length; k = k + 1) {
-                                if(pos==k+1){
-                                    if(pos<=16){
-                                        t[k].setX(X);
-                                    }else{
-                                        t[k].setX(X2);
-                                    }
-                                }
-                            }
-
-                            //Animations verticales
-                            for (int k = 0; k < t.length; k = k + 1) {
-                                if(pos==k+1){
-                                    if(pos<=4||(pos>8&&pos<=12)||(pos>16&&pos<=20)||(pos>24&&pos<=28)){
-                                        Animation anim2 = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.move_32_4_down);
-                                        t[k].startAnimation(anim2);
-                                    } else {
-                                        Animation anim2 = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.move_32_4_up);
-                                        t[k].startAnimation(anim2);
-                                    }
-                                }
-                            }
-
-                        }
-                    });
-                }
-            }).start();
-
-            //New position Y
-            new Thread(new Runnable() {
                 @Override
-                public void run() {
-                    try {
-                        Thread.sleep(1955);
-                    } catch (InterruptedException e) {
-                        e.printStackTrace();
-                    }
-                    runOnUiThread(new Runnable() {
+                public void onAnimationEnd(Animation animation) {
+                    float X;
+                    if(pos<=16) X=285*density;
+                    else X=560*density;
+                    t[pos-1].setX(X);
+                    Animation anim;
+                    if(pos<=4||(pos>8&&pos<=12)||(pos>16&&pos<=20)||(pos>24&&pos<=28)) {anim = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.move_32_4_down);}
+                    else  {anim = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.move_32_4_up);}
+                    t[pos-1].startAnimation(anim);
+                    anim.setAnimationListener(new Animation.AnimationListener() {
                         @Override
-                        public void run() {
+                        public void onAnimationStart(Animation animation) { }
+
+                        @Override
+                        public void onAnimationEnd(Animation animation) {
                             float Y = 275 * density;
                             float Y2 = 750 * density;
-                            for (int k = 0; k < t.length; k = k + 1) {
-                                if(pos==k+1){
-                                    if(pos<=8||pos>16&&pos<=24){
-                                        t[k].setY(Y);
-                                    } else{
-                                        t[k].setY(Y2);
-                                    }
-                                }
+                            if(pos<=8||pos>16&&pos<=24){
+                                t[pos-1].setY(Y);
+                            } else{
+                                t[pos-1].setY(Y2);
                             }
                             LottieAnimationView a1=findViewById(R.id.branche3221);
                             LottieAnimationView a2=findViewById(R.id.branche3222);
@@ -647,168 +533,107 @@ public class Game32 extends AppCompatActivity {
                             a3.playAnimation();
                             a4.playAnimation();
                         }
+
+                        @Override
+                        public void onAnimationRepeat(Animation animation) { }
                     });
+
                 }
-            }).start();
+
+                @Override
+                public void onAnimationRepeat(Animation animation) {
+
+                }
+            });
         }
 
         if(match==2){
-
-            //Animation horizontale
-            for(int k=0;k<t.length;k=k+1) {
-                if(pos==k+1){
-                    if(pos<=16){
-                        Animation anim2 = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.move_16_2_right);
-                        t[k].startAnimation(anim2);
-                    } else {
-                        Animation anim2 = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.move_16_2_left);
-                        t[k].startAnimation(anim2);
-                    }
-                }
-
-            }
-
-            //Animation verticale + new position X
-            new Thread(new Runnable() {
+            Animation anim;
+            if(pos<=16) {anim = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.move_16_2_right);}
+            else {anim = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.move_16_2_left);}
+            t[pos-1].startAnimation(anim);
+            anim.setAnimationListener(new Animation.AnimationListener() {
                 @Override
-                public void run() {
-                    try {
-                        Thread.sleep(950);
-                    } catch (InterruptedException e) {
-                        e.printStackTrace();
-                    }
-                    runOnUiThread(new Runnable() {
-                        @Override
-                        public void run() {
+                public void onAnimationStart(Animation animation) {}
 
-                            //Position X
-                            float X=335*density;
-                            float X2=500*density;
-                            for(int k=0;k<t.length;k=k+1){
-                                if(pos==k+1){
-                                    if(pos<=16){
-                                        t[k].setX(X);
-                                    } else {
-                                        t[k].setX(X2);
-                                    }
-                                }
-                            }
-
-                            //Animations verticales
-                            for(int k=0;k<t.length;k=k+1){
-                                if(pos==k+1){
-                                    if(pos<=8 || (pos>16 && pos<=24)){
-                                        Animation anim2 = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.move_8_2_down);
-                                        t[k].startAnimation(anim2);
-                                    } else {
-                                        Animation anim2 = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.move_8_2_up);
-                                        t[k].startAnimation(anim2);
-                                    }
-                                }
-                            }
-                        }
-                    });
-                }
-            }).start();
-
-            //New position Y
-            new Thread(new Runnable() {
                 @Override
-                public void run() {
-                    try {
-                        Thread.sleep(1955);
-                    } catch (InterruptedException e) {
-                        e.printStackTrace();
+                public void onAnimationEnd(Animation animation) {
+                    float X=335*density;
+                    float X2=510*density;
+                    if(pos<=16) t[pos-1].setX(X);
+                    else t[pos-1].setX(X2);
+                    Animation anim;
+                    if(pos<=8 || (pos>16 && pos<=24)){
+                        anim= AnimationUtils.loadAnimation(getApplicationContext(),R.anim.move_8_2_down);
                     }
-                    runOnUiThread(new Runnable() {
+                    else{
+                        anim = AnimationUtils.loadAnimation(getApplicationContext(),R.anim.move_8_2_up);
+                    }
+                    t[pos-1].startAnimation(anim);
+                    anim.setAnimationListener(new Animation.AnimationListener() {
                         @Override
-                        public void run() {
+                        public void onAnimationStart(Animation animation) { }
+
+                        @Override
+                        public void onAnimationEnd(Animation animation) {
                             float Y=510*density;
-                            for(int k=0;k<t.length;k=k+1) {
-                                if(pos==k+1){
-                                    t[k].setY(Y);
-                                }
-                            }
+                            t[pos-1].setY(Y);
                             LottieAnimationView a=findViewById(R.id.branche32finale);
                             a.setSpeed(0.5f);
                             a.playAnimation();
                         }
+
+                        @Override
+                        public void onAnimationRepeat(Animation animation) { }
                     });
+
                 }
-            }).start();
+
+                @Override
+                public void onAnimationRepeat(Animation animation) {
+
+                }
+            });
         }
 
         if(match==1){
-            //Animation horizontale
-            for(int k=0;k<t.length;k=k+1) {
-                if(pos==k+1){
-                    if(pos<=16){
-                        Animation anim2 = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.move_8_2_right);
-                        t[k].startAnimation(anim2);
-                    } else {
-                        Animation anim2 = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.move_8_2_left);
-                        t[k].startAnimation(anim2);
-                    }
-                }
-
-            }
-
-            //Animation verticale + new position X
-            new Thread(new Runnable() {
+            Animation anim;
+            if(pos<=16) {anim = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.move_8_2_right);}
+            else {anim = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.move_8_2_left);}
+            t[pos-1].startAnimation(anim);
+            anim.setAnimationListener(new Animation.AnimationListener() {
                 @Override
-                public void run() {
-                    try {
-                        Thread.sleep(950);
-                    } catch (InterruptedException e) {
-                        e.printStackTrace();
-                    }
-                    runOnUiThread(new Runnable() {
-                        @Override
-                        public void run() {
+                public void onAnimationStart(Animation animation) {}
 
-                            //Position X
-                            float X=415*density;
-                            for(int k=0;k<t.length;k=k+1){
-                                if(pos==k+1){
-                                    t[k].setX(X);
-                                }
-                            }
-
-                            for(int k=0;k<t.length;k=k+1){
-                                if(pos==k+1){
-                                    Animation anim2 = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.move_8_1_up);
-                                    t[k].startAnimation(anim2);
-                                }
-                            }
-                        }
-                    });
-                }
-            }).start();
-
-            //New position Y
-            new Thread(new Runnable() {
                 @Override
-                public void run() {
-                    try {
-                        Thread.sleep(1955);
-                    } catch (InterruptedException e) {
-                        e.printStackTrace();
-                    }
-                    runOnUiThread(new Runnable() {
+                public void onAnimationEnd(Animation animation) {
+                    float X=420*density;
+                    t[pos-1].setX(X);
+                    Animation anim= AnimationUtils.loadAnimation(getApplicationContext(),R.anim.move_8_1_up);
+                    t[pos-1].startAnimation(anim);
+                    anim.setAnimationListener(new Animation.AnimationListener() {
                         @Override
-                        public void run() {
+                        public void onAnimationStart(Animation animation) { }
+
+                        @Override
+                        public void onAnimationEnd(Animation animation) {
                             float Y=460*density;
-                            for(int k=0;k<t.length;k=k+1){
-                                if(pos==k+1){
-                                    t[k].setY(Y);
-                                }
-                            }
+                            t[pos-1].setY(Y);
                             LottieAnimationView a=findViewById(R.id.winner32);
                             a.playAnimation();
                         }
+
+                        @Override
+                        public void onAnimationRepeat(Animation animation) { }
                     });
+
                 }
-            }).start();
+
+                @Override
+                public void onAnimationRepeat(Animation animation) {
+
+                }
+            });
         }
     }
 
@@ -865,25 +690,24 @@ public class Game32 extends AppCompatActivity {
         t[29]=m30;
         t[30]=m31;
         t[31]=m32;
-        for(int i=0;i<t.length;i=i+1){
-            t[i].setSelected(true);
+        for (TextView textView : t) {
+            textView.setSelected(true);
         }
         return t;
     }
 
     protected void titres(List<Album> albums){
-        for(int i=0;i<albums.size();i=i+1){
-            final int id=i;
-            final String image=albums.get(i).getBigImageUrl();
+        for(Album album : albums){
+            final String image=album.getBigImageUrl();
             RequestListener listener = new JsonRequestListener() {
                 public void onResult(Object result, Object requestId) {
                     List<Track> AlbumTracks=(List<Track>) result;
                     if(mode.equals("Top")){
-                        for(int i=0;i<AlbumTracks.size();i=i+1){
-                            Song track=new Song(AlbumTracks.get(i).getShortTitle(),image,AlbumTracks.get(i).getPreviewUrl(),AlbumTracks.get(i).getRank());
+                        for(Track elem : AlbumTracks){
+                            Song track=new Song(elem.getShortTitle(),image,elem.getPreviewUrl(),elem.getRank());
                             //On retire les live et les Remix
                             boolean ban=ban(track.getTitle());
-                            if(ban==false){
+                            if(!ban){
                                 boolean doublon=false;
                                 //On check que le morceau ne soit pas déjà présent
                                 for(int j=0;j<songList.size();j=j+1){
@@ -899,7 +723,7 @@ public class Game32 extends AppCompatActivity {
                                     }
                                 }
                                 //Si pas doublon, on cherche le min
-                                if(doublon==false){
+                                if(!doublon){
                                     //Recherche du min
                                     int min=songList.get(0).getRank();
                                     int indexmin=0;
@@ -910,7 +734,7 @@ public class Game32 extends AppCompatActivity {
                                         }
                                     }
                                     //Remplacement du min
-                                    if(AlbumTracks.get(i).getRank()>=min){
+                                    if(elem.getRank()>=min){
                                         songList.get(indexmin).setTitle(track.getTitle());
                                         songList.get(indexmin).setImage(track.getImage());
                                         songList.get(indexmin).setPreview(track.getPreview());
@@ -922,11 +746,11 @@ public class Game32 extends AppCompatActivity {
                         }
                     }
                     if(mode.equals("Random")){
-                        for(int i=0;i<AlbumTracks.size();i=i+1){
-                            Song track=new Song(AlbumTracks.get(i).getShortTitle(),albums.get(id).getBigImageUrl(),AlbumTracks.get(i).getPreviewUrl(),AlbumTracks.get(i).getRank());
+                        for(Track elem : AlbumTracks){
+                            Song track=new Song(elem.getShortTitle(),album.getBigImageUrl(),elem.getPreviewUrl(),elem.getRank());
                             if(track.getRank()>100000){
                                 boolean ban=ban(track.getTitle());
-                                if(ban==false){
+                                if(!ban){
                                     songListR.add(track);
                                 }
 
@@ -938,7 +762,7 @@ public class Game32 extends AppCompatActivity {
                 public void onException(Exception e, Object requestId) {}
             };
             // create the request
-            DeezerRequest request = DeezerRequestFactory.requestAlbumTracks(albums.get(i).getId());
+            DeezerRequest request = DeezerRequestFactory.requestAlbumTracks(album.getId());
             // set a requestId, that will be passed on the listener's callback methods
             request.setId("myRequest");
             // launch the request asynchronously
@@ -957,9 +781,11 @@ public class Game32 extends AppCompatActivity {
                     @Override
                     public void run() {
                         if(mode.equals("Top")){
+                            verification(songList);
                             ordre(mode,songList);
                         }
                         if(mode.equals("Random")){
+                            verification(songListR);
                             int i=0;
                             List<Song> FinalList=new ArrayList<>();
                             while(i<32){
@@ -972,7 +798,7 @@ public class Game32 extends AppCompatActivity {
                                 }
 
                                 //On ajoute s'il n'y est pas
-                                if(doublon==false){
+                                if(!doublon){
                                     FinalList.add(track);
                                     i=i+1;
                                 }
@@ -983,6 +809,18 @@ public class Game32 extends AppCompatActivity {
                 });
             }
         }).start();
+    }
+
+    protected void verification(List<Song> tracks){
+        for(Song track:tracks){
+            if(track.getTitle().isEmpty() || track.getTitle()==null){
+                Toast.makeText(this,"This artist does not have 32 songs",Toast.LENGTH_SHORT).show();
+                Intent start=new Intent(getApplicationContext(), Menu.class);
+                start.putExtra("Email",Email);
+                startActivity(start);
+                finish();
+            }
+        }
     }
 
     protected int algorithm(){
@@ -996,8 +834,7 @@ public class Game32 extends AppCompatActivity {
                 }
             }
         }
-        int index=Integer.parseInt(repartition.get(r.nextInt(repartition.size())));
-        return index;
+        return Integer.parseInt(repartition.get(r.nextInt(repartition.size())));
     }
 
     @Override
@@ -1198,7 +1035,7 @@ public class Game32 extends AppCompatActivity {
 
     protected boolean ban(String song){
         boolean banni=false;
-        if(song.indexOf("Remix")>-1 || song.indexOf("(Live")>-1 || song.indexOf("Live)")>-1 || song.indexOf("Reanimation")>-1){
+        if(song.contains("Remix") || song.contains("Live") || song.contains("Reanimation")){
             banni=true;
         }
         return banni;

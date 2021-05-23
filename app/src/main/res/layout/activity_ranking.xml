@@ -5,7 +5,7 @@
     android:id="@+id/layoutR"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/gradient_list">
+    android:background="@drawable/backgroundappsmall">
 
 
     <TextView
@@ -13,7 +13,7 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_weight="1"
-        android:fontFamily="@font/cartoon"
+        android:fontFamily="@font/royalacid"
         android:text="Classement general"
         android:textAlignment="center"
         android:textColor="@android:color/white"

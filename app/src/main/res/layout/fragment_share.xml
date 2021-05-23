@@ -3,14 +3,14 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:background="@drawable/gradient_list"
+    android:background="@drawable/backgroundappsmall"
     android:layout_height="match_parent">
 
     <TextView
         android:id="@+id/textView17"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:fontFamily="@font/cartoon"
+        android:fontFamily="@font/royalacid"
         android:text="Share"
         android:textAlignment="center"
         android:textColor="@android:color/white"

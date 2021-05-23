@@ -31,7 +31,7 @@ public class start extends AppCompatActivity {
     SeekBar bar;
     Button go;
     TextView nombre;
-    TextView Back;
+    ImageView Back;
     String Email;
 
     @Override
@@ -42,10 +42,6 @@ public class start extends AppCompatActivity {
 
         //Animated background
         ConstraintLayout constraintlayout=findViewById(R.id.layoutstart);
-        AnimationDrawable animation= (AnimationDrawable) constraintlayout.getBackground();
-        animation.setEnterFadeDuration(2000);
-        animation.setExitFadeDuration(3000);
-        animation.start();
 
         //Récup donnée
         Intent intent=getIntent();
@@ -59,96 +55,84 @@ public class start extends AppCompatActivity {
 
         initialisation();
 
-        random.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                visible();
-                go.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        int pos=bar.getProgress();
-                        if(pos==0){
-                            Intent start=new Intent(getApplicationContext(), Game.class);
-                            start.putExtra("Mode","Random");
-                            start.putExtra("Artiste",IdArtiste);
-                            start.putExtra("NomArtiste",nomArtiste);
-                            start.putExtra("Etat","Start");
-                            start.putExtra("Email",Email);
-                            startActivity(start);
-                            overridePendingTransition(R.anim.fade_in,R.anim.fade_out);
-                            finish();
-                        }
-                        if(pos==1){
-                            Intent start=new Intent(getApplicationContext(), Game16.class);
-                            start.putExtra("Mode","Random");
-                            start.putExtra("Artiste",IdArtiste);
-                            start.putExtra("NomArtiste",nomArtiste);
-                            start.putExtra("Etat","Start");
-                            start.putExtra("Email",Email);
-                            startActivity(start);
-                            overridePendingTransition(R.anim.fade_in,R.anim.fade_out);
-                            finish();
-                        }
-                        if(pos==2){
-                            Intent start=new Intent(getApplicationContext(), Game32.class);
-                            start.putExtra("Mode","Random");
-                            start.putExtra("Artiste",IdArtiste);
-                            start.putExtra("NomArtiste",nomArtiste);
-                            start.putExtra("Etat","Start");
-                            start.putExtra("Email",Email);
-                            startActivity(start);
-                            overridePendingTransition(R.anim.fade_in,R.anim.fade_out);
-                            finish();
-                        }
-                    }
-                });
-            }
+        random.setOnClickListener(v -> {
+            visible();
+            go.setOnClickListener(v1 -> {
+                int pos=bar.getProgress();
+                if(pos==0){
+                    Intent start=new Intent(getApplicationContext(), Game.class);
+                    start.putExtra("Mode","Random");
+                    start.putExtra("Artiste",IdArtiste);
+                    start.putExtra("NomArtiste",nomArtiste);
+                    start.putExtra("Etat","Start");
+                    start.putExtra("Email",Email);
+                    startActivity(start);
+                    overridePendingTransition(R.anim.fade_in,R.anim.fade_out);
+                    finish();
+                }
+                if(pos==1){
+                    Intent start=new Intent(getApplicationContext(), Game16.class);
+                    start.putExtra("Mode","Random");
+                    start.putExtra("Artiste",IdArtiste);
+                    start.putExtra("NomArtiste",nomArtiste);
+                    start.putExtra("Etat","Start");
+                    start.putExtra("Email",Email);
+                    startActivity(start);
+                    overridePendingTransition(R.anim.fade_in,R.anim.fade_out);
+                    finish();
+                }
+                if(pos==2){
+                    Intent start=new Intent(getApplicationContext(), Game32.class);
+                    start.putExtra("Mode","Random");
+                    start.putExtra("Artiste",IdArtiste);
+                    start.putExtra("NomArtiste",nomArtiste);
+                    start.putExtra("Etat","Start");
+                    start.putExtra("Email",Email);
+                    startActivity(start);
+                    overridePendingTransition(R.anim.fade_in,R.anim.fade_out);
+                    finish();
+                }
+            });
         });
-        top.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                visible();
-                go.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        int pos=bar.getProgress();
-                        if(pos==0){
-                            Intent start=new Intent(getApplicationContext(),Game.class);
-                            start.putExtra("Mode","Top");
-                            start.putExtra("Artiste",IdArtiste);
-                            start.putExtra("NomArtiste",nomArtiste);
-                            start.putExtra("Etat","Start");
-                            start.putExtra("Email",Email);
-                            startActivity(start);
-                            overridePendingTransition(R.anim.fade_in,R.anim.fade_out);
-                            finish();
-                        }
-                        if(pos==1){
-                            Intent start=new Intent(getApplicationContext(),Game16.class);
-                            start.putExtra("Mode","Top");
-                            start.putExtra("Artiste",IdArtiste);
-                            start.putExtra("NomArtiste",nomArtiste);
-                            start.putExtra("Etat","Start");
-                            start.putExtra("Email",Email);
-                            startActivity(start);
-                            overridePendingTransition(R.anim.fade_in,R.anim.fade_out);
-                            finish();
-                        }
-                        if(pos==2){
-                            Intent start=new Intent(getApplicationContext(),Game32.class);
-                            start.putExtra("Mode","Top");
-                            start.putExtra("Artiste",IdArtiste);
-                            start.putExtra("NomArtiste",nomArtiste);
-                            start.putExtra("Etat","Start");
-                            start.putExtra("Email",Email);
-                            startActivity(start);
-                            overridePendingTransition(R.anim.fade_in,R.anim.fade_out);
-                            finish();
-                        }
+        top.setOnClickListener(v -> {
+            visible();
+            go.setOnClickListener(v12 -> {
+                int pos=bar.getProgress();
+                if(pos==0){
+                    Intent start=new Intent(getApplicationContext(),Game.class);
+                    start.putExtra("Mode","Top");
+                    start.putExtra("Artiste",IdArtiste);
+                    start.putExtra("NomArtiste",nomArtiste);
+                    start.putExtra("Etat","Start");
+                    start.putExtra("Email",Email);
+                    startActivity(start);
+                    overridePendingTransition(R.anim.fade_in,R.anim.fade_out);
+                    finish();
+                }
+                if(pos==1){
+                    Intent start=new Intent(getApplicationContext(),Game16.class);
+                    start.putExtra("Mode","Top");
+                    start.putExtra("Artiste",IdArtiste);
+                    start.putExtra("NomArtiste",nomArtiste);
+                    start.putExtra("Etat","Start");
+                    start.putExtra("Email",Email);
+                    startActivity(start);
+                    overridePendingTransition(R.anim.fade_in,R.anim.fade_out);
+                    finish();
+                }
+                if(pos==2){
+                    Intent start=new Intent(getApplicationContext(),Game32.class);
+                    start.putExtra("Mode","Top");
+                    start.putExtra("Artiste",IdArtiste);
+                    start.putExtra("NomArtiste",nomArtiste);
+                    start.putExtra("Etat","Start");
+                    start.putExtra("Email",Email);
+                    startActivity(start);
+                    overridePendingTransition(R.anim.fade_in,R.anim.fade_out);
+                    finish();
+                }
 
-                    }
-                });
-            }
+            });
         });
         Back.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -173,7 +157,7 @@ public class start extends AppCompatActivity {
         bar=(SeekBar) findViewById(R.id.seekbar);
         go=(Button) findViewById(R.id.go);
         nombre=(TextView) findViewById(R.id.ntitre);
-        Back=(TextView) findViewById(R.id.backstart);
+        Back=(ImageView) findViewById(R.id.backstart);
 
         //Widget invisible
         t8.setVisibility(View.GONE);

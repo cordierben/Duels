@@ -36,7 +36,19 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content">
 
-
+                        <TextView
+                            android:id="@+id/gameTitle"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textSize="150dp"
+                            android:alpha="0.2"
+                            android:visibility="gone"
+                            android:layout_marginLeft="200dp"
+                            android:layout_marginTop="250dp"
+                            android:textColor="@android:color/darker_gray"
+                            android:rotation="45"
+                            android:fontFamily="@font/royalacid"
+                            android:text="Duels"/>
 
                         <com.airbnb.lottie.LottieAnimationView
                             android:id="@+id/branche3281"

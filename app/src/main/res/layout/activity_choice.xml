@@ -25,7 +25,7 @@
                 android:text="Match "
                 android:textColor="@android:color/white"
                 android:textSize="1dp"
-                android:fontFamily="@font/cartoon"
+                android:fontFamily="@font/royalacid"
                 android:textAlignment="center"/>
 
             <FrameLayout android:layout_width="match_parent"

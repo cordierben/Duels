@@ -55,10 +55,7 @@ public class Settings extends AppCompatActivity {
 
         //Animated background
         ConstraintLayout constraintlayout=findViewById(R.id.layoutSettings);
-        AnimationDrawable animation= (AnimationDrawable) constraintlayout.getBackground();
-        animation.setEnterFadeDuration(2000);
-        animation.setExitFadeDuration(4000);
-        animation.start();
+
         Intent start=getIntent();
         Email=start.getStringExtra("Email");
         back=findViewById(R.id.SettingsToMenu);
