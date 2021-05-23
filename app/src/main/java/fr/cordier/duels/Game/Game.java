@@ -3,6 +3,7 @@ package fr.cordier.duels.Game;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.Intent;
 import android.graphics.drawable.AnimationDrawable;
@@ -65,6 +66,7 @@ public class Game extends AppCompatActivity {
     List<Song> songList=new ArrayList<>(8);
     List<Song> perdantList=new ArrayList<>(8);
     List<Song> songListR=new ArrayList<>();
+    @SuppressLint("StaticFieldLeak")
     public static Activity fa;
 
     @Override
@@ -74,11 +76,11 @@ public class Game extends AppCompatActivity {
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
 
         //Animated background
-        LinearLayout constraintlayout=findViewById(R.id.layoutG);
+        /*LinearLayout constraintlayout=findViewById(R.id.layoutG);
         AnimationDrawable animation= (AnimationDrawable) constraintlayout.getBackground();
         animation.setEnterFadeDuration(2000);
         animation.setExitFadeDuration(4000);
-        animation.start();
+        animation.start();*/
 
         //Initialisation
         Intent intent=getIntent();
@@ -95,9 +97,11 @@ public class Game extends AppCompatActivity {
 
         deezerConnect = new DeezerConnect(applicationID);
 
-        setImageBackground();
+        launchTitre();
+        //setImageBackground();
     }
 
+    /*
     public void setImageBackground( ) {
         ImageView[] background={findViewById(R.id.background1),findViewById(R.id.background2),findViewById(R.id.background3),findViewById(R.id.background4),findViewById(R.id.background5),findViewById(R.id.background6)};
         RequestListener listener = new JsonRequestListener() {
@@ -107,7 +111,7 @@ public class Game extends AppCompatActivity {
                 for(int i=0;i<6;i=i+1){
                     if(albumCovers.get(i)!=null) Picasso.get().load(albumCovers.get(i).getBigImageUrl()).into(background[i]);
                 }
-                launchTitre();
+
             }
             public void onUnparsedResult(String requestResponse, Object requestId) {}
             public void onException(Exception e, Object requestId) {}
@@ -116,6 +120,7 @@ public class Game extends AppCompatActivity {
         request.setId("myRequest");
         deezerConnect.requestAsync(request,listener);
     }
+    */
 
     public void launchTitre(){
         RequestListener listener = new JsonRequestListener() {
@@ -573,26 +578,23 @@ public class Game extends AppCompatActivity {
             final List<Song> resultF=resultV;
             classement(perdantList,resultF.get(0));
             Match.setText("See Ranking!");
-            Match.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    Intent start=new Intent(getApplicationContext(), Fin.class);
-                    for(int i=0;i<perdantList.size();i=i+1){
-                        start.putExtra("songD "+i,perdantList.get(i).getTitle());
-                        start.putExtra("imageD "+i,perdantList.get(i).getImage());
-                    }
-                    start.putExtra("vainqueur",resultF.get(0).getTitle());
-                    start.putExtra("vainqueurIm",resultF.get(0).getImage());
-                    start.putExtra("nbre",String.valueOf(8));
-                    start.putExtra("totalP",String.valueOf(perdantList.size()));
-                    start.putExtra("NomArtiste",nameArtiste);
-                    start.putExtra("Email",Email);
-                    start.putExtra("IdArtiste",String.valueOf(artiste));
-                    start.putExtra("activity","Game8");
-                    startActivity(start);
-                    overridePendingTransition(R.anim.fade_in,R.anim.fade_out);
-                    finish();
+            Match.setOnClickListener(v -> {
+                Intent start=new Intent(getApplicationContext(), Fin.class);
+                for(int i=0;i<perdantList.size();i=i+1){
+                    start.putExtra("songD "+i,perdantList.get(i).getTitle());
+                    start.putExtra("imageD "+i,perdantList.get(i).getImage());
                 }
+                start.putExtra("vainqueur",resultF.get(0).getTitle());
+                start.putExtra("vainqueurIm",resultF.get(0).getImage());
+                start.putExtra("nbre",String.valueOf(8));
+                start.putExtra("totalP",String.valueOf(perdantList.size()));
+                start.putExtra("NomArtiste",nameArtiste);
+                start.putExtra("Email",Email);
+                start.putExtra("IdArtiste",String.valueOf(artiste));
+                start.putExtra("activity","Game8");
+                startActivity(start);
+                overridePendingTransition(R.anim.fade_in,R.anim.fade_out);
+                finish();
             });
         }
 
@@ -651,7 +653,7 @@ public class Game extends AppCompatActivity {
                                 int i=0;
                                 int score=0;
                                 String key="";
-                                for (DocumentSnapshot doc : task.getResult()) {
+                                for (DocumentSnapshot doc : Objects.requireNonNull(task.getResult())) {
                                     i++;
                                     score=doc.getDouble("Score").intValue();
                                     key=doc.getId();
@@ -679,7 +681,7 @@ public class Game extends AppCompatActivity {
                     public void onComplete(@NonNull Task<QuerySnapshot> task) {
                         Log.i("*******","onComplete invoked");
                         if (task.isSuccessful()) {
-                            for (DocumentSnapshot doc : task.getResult()) {
+                            for (DocumentSnapshot doc : Objects.requireNonNull(task.getResult())) {
                                 ranking.put("Artist",nameArtiste);
                                 ranking.put("User",Email);
                                 ranking.put("Country",doc.getString("Country"));
