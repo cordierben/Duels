@@ -33,18 +33,25 @@
         app:layout_constraintVertical_bias="0.0"
         app:srcCompat="@drawable/result" />
 
-    <LinearLayout
-        android:id="@+id/FinalRankingLayout"
+    <ScrollView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="30dp"
-        android:orientation="vertical"
         app:layout_constraintBottom_toTopOf="@+id/menu"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintHorizontal_bias="0.716"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/result"
-        app:layout_constraintVertical_bias="0.037" />
+        app:layout_constraintVertical_bias="0.034">
+
+        <LinearLayout
+            android:id="@+id/FinalRankingLayout"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical" />
+
+    </ScrollView>
+
 
     <!--
     <GridLayout

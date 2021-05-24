@@ -5,7 +5,7 @@ public class Song {
     String artist;
     int score;
     long id;
-    String image;
+    String image,albumTitle;
     String preview;
     int rank;
     String posGrille;
@@ -45,10 +45,6 @@ public class Song {
 
     public String getPosGrilleAct() {
         return posGrilleAct;
-    }
-
-    public void setPosGrilleAct(String posGrilleAct) {
-        this.posGrilleAct = posGrilleAct;
     }
 
     public Song(String title, int score, String image, String preview, int rank) {

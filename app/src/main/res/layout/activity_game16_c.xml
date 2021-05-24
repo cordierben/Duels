@@ -3,13 +3,27 @@
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
     android:orientation="horizontal"
-    android:background="@drawable/gradient_list"
+    android:background="@drawable/gradient_circular_list"
     android:id="@+id/layoutG16C">
 
 
     <FrameLayout
         android:layout_width="wrap_content"
         android:layout_height="match_parent">
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:src="@drawable/logopng"
+            android:alpha="0.3"/>
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/vinyleviolet"
+            android:layout_gravity="center"
+            android:alpha="0.2"/>
 
         <HorizontalScrollView
             android:layout_width="match_parent"

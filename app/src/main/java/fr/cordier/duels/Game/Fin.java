@@ -1,12 +1,11 @@
 package fr.cordier.duels.Game;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.constraintlayout.widget.ConstraintLayout;
 import android.content.Intent;
 import android.graphics.Color;
-import android.graphics.drawable.AnimationDrawable;
 import android.graphics.drawable.GradientDrawable;
 import android.os.Bundle;
+import android.view.Gravity;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.WindowManager;
@@ -22,7 +21,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import fr.cordier.duels.Class.Song;
-import fr.cordier.duels.Menu.GenreList;
 import fr.cordier.duels.R;
 import fr.cordier.duels.UiMenu.Menu;
 
@@ -39,8 +37,7 @@ public class Fin extends AppCompatActivity {
         setContentView(R.layout.activity_fin);
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
 
-        //Animated background
-        ConstraintLayout constraintlayout=findViewById(R.id.layoutF);
+
 
         ranking=findViewById(R.id.FinalRankingLayout);
         menu=(Button) findViewById(R.id.menu);
@@ -60,25 +57,19 @@ public class Fin extends AppCompatActivity {
             tracks.add(new Song(intent.getStringExtra("songD "+index),0,intent.getStringExtra("imageD "+index)));
         }
         CreateRanking(tracks);
-        menu.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent start=new Intent(getApplicationContext(), Menu.class);
-                start.putExtra("Email",Email);
-                startActivity(start);
-                finish();
-            }
+        menu.setOnClickListener(v -> {
+            Intent start=new Intent(getApplicationContext(), Menu.class);
+            start.putExtra("Email",Email);
+            startActivity(start);
+            finish();
         });
-        rank.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent start=new Intent(getApplicationContext(), Rankings.class);
-                start.putExtra("NomArtiste",nameArtiste);
-                start.putExtra("IdArtiste",String.valueOf(IdA));
-                start.putExtra("Email",Email);
-                startActivity(start);
-                finish();
-            }
+        rank.setOnClickListener(v -> {
+            Intent start=new Intent(getApplicationContext(), Rankings.class);
+            start.putExtra("NomArtiste",nameArtiste);
+            start.putExtra("IdArtiste",String.valueOf(IdA));
+            start.putExtra("Email",Email);
+            startActivity(start);
+            finish();
         });
     }
 
@@ -93,15 +84,18 @@ public class Fin extends AppCompatActivity {
             ViewGroup.LayoutParams parampos = new ViewGroup.LayoutParams(SizeNumber,SizeNumber);
 
             pos.setLayoutParams(parampos);
+            LinearLayout linear = new LinearLayout(getApplicationContext());
+            LinearLayout.LayoutParams param = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT);
             if(i==0){
+
                 //Layout
-                LinearLayout linear = new LinearLayout(getApplicationContext());
-                LinearLayout.LayoutParams param = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT);
-                param.setMargins(0,10,0,10);
+                param.gravity= Gravity.CENTER;
+                param.setMargins(0,60,0,10);
                 linear.setPadding(5,5,5,5);
                 linear.setLayoutParams(param);
-                linear.setOrientation(LinearLayout.HORIZONTAL);
-                linear.setBackgroundColor(Color.parseColor("#FFD700"));
+                linear.setOrientation(LinearLayout.VERTICAL);
+                linear.setBackgroundResource(R.drawable.round_corner_gold);
+                linear.setGravity(View.TEXT_ALIGNMENT_CENTER);
 
                 //Image numéro
                 Picasso.get().load(R.drawable.un).into(pos);
@@ -109,10 +103,10 @@ public class Fin extends AppCompatActivity {
 
                 //Image album
                 Picasso.get().load(song.get(i).getImage()).into(im);
-                int taille=(int)density*50;
-                LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(taille,taille);
-                im.setLayoutParams(params);
-
+                int taille=(int)density*220;
+                LinearLayout.LayoutParams paramIm = new LinearLayout.LayoutParams(taille,taille);
+                paramIm.gravity= Gravity.CENTER;
+                im.setLayoutParams(paramIm);
                 linear.addView(im);
 
                 //Texte morceau
@@ -120,15 +114,12 @@ public class Fin extends AppCompatActivity {
                 txt.setTextColor(Color.parseColor("#FFFFFF"));
                 txt.setTextSize(25);
                 LinearLayout.LayoutParams paramtxt = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT, LinearLayout.LayoutParams.WRAP_CONTENT);
+                paramtxt.gravity= Gravity.CENTER;
                 txt.setLayoutParams(paramtxt);
                 txt.setText(song.get(i).getTitle());
                 linear.addView(txt);
 
-                ranking.addView(linear);
-
             } else {
-                LinearLayout linear = new LinearLayout(getApplicationContext());
-                LinearLayout.LayoutParams param = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT);
                 param.setMargins(0,10,0,10);
                 linear.setPadding(5,5,5,5);
                 linear.setLayoutParams(param);
@@ -158,8 +149,8 @@ public class Fin extends AppCompatActivity {
                 txt.setText(song.get(i).getTitle());
 
                 linear.addView(txt);
-                ranking.addView(linear);
             }
+            ranking.addView(linear);
         }
 
     }

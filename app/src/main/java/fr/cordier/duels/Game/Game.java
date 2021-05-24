@@ -6,7 +6,6 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.Intent;
-import android.graphics.drawable.AnimationDrawable;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -14,15 +13,11 @@ import android.view.WindowManager;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.Button;
-import android.widget.ImageView;
-import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.airbnb.lottie.LottieAnimationView;
 import com.deezer.sdk.model.Album;
-import com.deezer.sdk.model.Artist;
-import com.deezer.sdk.model.Permissions;
 import com.deezer.sdk.model.Track;
 import com.deezer.sdk.network.connect.DeezerConnect;
 import com.deezer.sdk.network.request.DeezerRequest;
@@ -37,7 +32,6 @@ import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QuerySnapshot;
-import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -47,7 +41,6 @@ import java.util.Map;
 import java.util.Objects;
 import java.util.Random;
 
-import fr.cordier.duels.Class.CircleTransform;
 import fr.cordier.duels.Class.Song;
 import fr.cordier.duels.R;
 
@@ -98,29 +91,9 @@ public class Game extends AppCompatActivity {
         deezerConnect = new DeezerConnect(applicationID);
 
         launchTitre();
-        //setImageBackground();
     }
 
-    /*
-    public void setImageBackground( ) {
-        ImageView[] background={findViewById(R.id.background1),findViewById(R.id.background2),findViewById(R.id.background3),findViewById(R.id.background4),findViewById(R.id.background5),findViewById(R.id.background6)};
-        RequestListener listener = new JsonRequestListener() {
 
-            public void onResult(Object result, Object requestId) {
-                List<Album> albumCovers=(List<Album>) result;
-                for(int i=0;i<6;i=i+1){
-                    if(albumCovers.get(i)!=null) Picasso.get().load(albumCovers.get(i).getBigImageUrl()).into(background[i]);
-                }
-
-            }
-            public void onUnparsedResult(String requestResponse, Object requestId) {}
-            public void onException(Exception e, Object requestId) {}
-        };
-        DeezerRequest request = DeezerRequestFactory.requestArtistAlbums(artiste);
-        request.setId("myRequest");
-        deezerConnect.requestAsync(request,listener);
-    }
-    */
 
     public void launchTitre(){
         RequestListener listener = new JsonRequestListener() {
@@ -395,7 +368,7 @@ public class Game extends AppCompatActivity {
         }
 
         if(match==2){
-            Animation anim=null;
+            Animation anim;
             if(pos<=4) {anim = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.move_8_2_right);}
             else {anim = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.move_8_2_left);}
             t[pos-1].startAnimation(anim);

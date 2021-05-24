@@ -72,12 +72,6 @@ public class Game16 extends AppCompatActivity {
         setContentView(R.layout.activity_game16);
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
 
-        //Animated background
-        LinearLayout constraintlayout=findViewById(R.id.layoutG16);
-        AnimationDrawable animation= (AnimationDrawable) constraintlayout.getBackground();
-        animation.setEnterFadeDuration(2000);
-        animation.setExitFadeDuration(4000);
-        animation.start();
 
         //Initialisation
         Intent intent=getIntent();
@@ -91,12 +85,7 @@ public class Game16 extends AppCompatActivity {
         t=tab();
         for(int i=0;i<16;i=i+1) songList.add(new Song("","","",0));
 
-
         deezerConnect = new DeezerConnect(applicationID);
-        String[] permissions = new String[] {
-                Permissions.BASIC_ACCESS,
-                Permissions.MANAGE_LIBRARY,
-                Permissions.LISTENING_HISTORY };
 
         //Récupération des morceaux Deezer
         RequestListener listener = new JsonRequestListener() {
@@ -263,9 +252,6 @@ public class Game16 extends AppCompatActivity {
             textView.setVisibility(View.VISIBLE);
             textView.startAnimation(anim);
         }
-        TextView title=findViewById(R.id.gameTitle);
-        title.setVisibility(View.VISIBLE);
-        title.startAnimation(anim);
     }
 
     protected void animation(final int match,final int pos,List<Song> song){

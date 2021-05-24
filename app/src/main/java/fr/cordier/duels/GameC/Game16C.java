@@ -69,12 +69,7 @@ public class Game16C extends AppCompatActivity {
         setContentView(R.layout.activity_game16_c);
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
 
-        //Animated background
-        LinearLayout constraintlayout=findViewById(R.id.layoutG16C);
-        AnimationDrawable animation= (AnimationDrawable) constraintlayout.getBackground();
-        animation.setEnterFadeDuration(2000);
-        animation.setExitFadeDuration(4000);
-        animation.start();
+
 
         //Initialisation
         fa=this;
@@ -229,9 +224,6 @@ public class Game16C extends AppCompatActivity {
             t[i].startAnimation(anim);
         }
 
-        TextView title=findViewById(R.id.gameTitle);
-        title.setVisibility(View.VISIBLE);
-        title.startAnimation(anim);
     }
 
     protected void animation(final int match,final int pos,List<Song> song){
